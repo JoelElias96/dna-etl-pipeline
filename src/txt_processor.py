@@ -20,10 +20,13 @@ def _gc_content(sequence: str) -> float:
         raise ValueError("The sequence cannot be empty.")
 
     # Count the number of 'G' and 'C' in the sequence
-    gc_count = sequence.count('G') + sequence.count('C')
+    gc_count = 0
+    for base in sequence:
+        if base == 'G' or base == 'C':
+            gc_count += 1
 
     # Calculate the GC content as a percentage of the total sequence length
-    return round((gc_count / len(sequence)) * 100, 2)
+    return round((gc_count / len(sequence)) * 100,2)
 
 def _codon_frequency(sequence: str) -> dict:
     """
@@ -92,8 +95,7 @@ def _longest_common_subsequence(word1: str, word2: str) -> str:
     Find the longest continuous common subsequence (substring) between two strings (private function).
 
     This function uses dynamic programming to find the longest continuous common subsequence
-    between two strings. It constructs a matrix to store the length of the longest
-    continuous subsequence between prefixes of the two strings.
+    between two strings. It uses a rolling array to optimize space usage.
 
     Args:
         word1 (str): The first input string.
@@ -101,27 +103,30 @@ def _longest_common_subsequence(word1: str, word2: str) -> str:
     Returns:
         str: The longest continuous common subsequence between the two input strings.
     """
+    # TODO: Try to optimize this function further for large strings
     if not word1 or not word2:
         return ""
 
-    n = len(word1)
-    m = len(word2)
+    n, m = len(word1), len(word2)
 
-    # Initialize the DP table with zeros
-    dp = [[0] * (m + 1) for _ in range(n + 1)]
+    # Use a rolling array to optimize space complexity
+    prev = [0] * (m + 1)
+    curr = [0] * (m + 1)
+
     max_length = 0
     end_index = 0
 
-    # Fill the DP table
     for i in range(1, n + 1):
         for j in range(1, m + 1):
             if word1[i - 1] == word2[j - 1]:
-                dp[i][j] = dp[i - 1][j - 1] + 1
-                if dp[i][j] > max_length:
-                    max_length = dp[i][j]
+                curr[j] = prev[j - 1] + 1
+                if curr[j] > max_length:
+                    max_length = curr[j]
                     end_index = i
             else:
-                dp[i][j] = 0
+                curr[j] = 0
+        # Swap rows: the current row becomes the previous row for the next iteration
+        prev, curr = curr, prev
 
     # Extract the longest common substring
     longest_common_substring = word1[end_index - max_length:end_index]

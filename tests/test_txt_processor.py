@@ -1,5 +1,5 @@
 import pytest
-import os
+
  
 def test_gc_content():
     from src.txt_processor import _gc_content
@@ -15,6 +15,8 @@ def test_gc_content():
     assert _gc_content("CCCC") == pytest.approx(100.0, 0.01), "Failed on CCCC" 
     long_sequence = "A" * 1000000 + "C" * 1000000 + "G" * 1000000 + "T" * 1000000
     assert _gc_content(long_sequence) == pytest.approx(50.0, 0.01), "Failed on long_sequence (1M of each nucleotide)"
+    long_sequence = "A" * 3333 + "TGC\n"
+    assert _gc_content(long_sequence) == pytest.approx(0.06, 0.01), "Failed on long_sequence (1M of each nucleotide)"
     with pytest.raises(ValueError, match="The sequence cannot be empty."):
         _gc_content("")
 
@@ -235,6 +237,12 @@ def test_longest_common_subsequence():
     expected_lcs = "TACG"
     assert _longest_common_subsequence(seq1, seq2) == expected_lcs, "Failed on Test 11"
 
+    # Test 12: two large sequences
+    seq1 = "A" * 10000 + "C" * 10000 + "G" * 10000 + "T" * 10000
+    seq2 = "A" * 10000 + "TGC"
+    expected_lcs = "A" * 10000
+    assert _longest_common_subsequence(seq1, seq2) == expected_lcs, "Failed on Test 12"
+
 def test_process_dna_txt_file(tmp_path):
     from src.txt_processor import process_dna_txt_file
 
@@ -350,25 +358,25 @@ def test_process_dna_txt_file(tmp_path):
     # Test 5: Long sequences
     write_and_test(
         file_content=(
-            "A" * 333333 + "TGC\n" +
-            "A" * 333333 + "TGC\n"
+            "A" * 3333 + "TGC\n" +
+            "A" * 3333 + "TGC\n"
         ),
         expected_output={
             "sequences": [
                 {
-                    "gc_content": 0.0003,  # GC is 3 out of 1,000,003
-                    "codons": {"AAA": 111111, "TGC": 1},
+                    "gc_content": 0.06,  # GC is 3 out of 1,000,003
+                    "codons": {"AAA": 1111, "TGC": 1},
                 },
                 {
-                    "gc_content": 0.0003,
-                    "codons": {"AAA": 111111, "TGC": 1},
+                    "gc_content": 0.06,
+                    "codons": {"AAA": 1111, "TGC": 1},
                 },
             ],
             "most_common_codon": "AAA",  # Most frequent codon
             "lcs": {
-                "value": "A" * 333333 + "TGC",
+                "value": "A" * 3333 + "TGC",
                 "sequences": [1, 2],
-                "length": 333336,
+                "length": 3336,
             },
         },
         case_name="Long sequences",

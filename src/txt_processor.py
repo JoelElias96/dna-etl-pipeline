@@ -1,4 +1,5 @@
 from itertools import combinations
+from collections import defaultdict
 
 def _gc_content(sequence: str) -> float:
     """
@@ -22,41 +23,36 @@ def _gc_content(sequence: str) -> float:
     gc_count = sequence.count('G') + sequence.count('C')
 
     # Calculate the GC content as a percentage of the total sequence length
-    return (gc_count / len(sequence)) * 100
+    return round((gc_count / len(sequence)) * 100, 2)
 
-def _codon_frequency(sequence : str) -> dict:
+def _codon_frequency(sequence: str) -> dict:
     """
-    Calculate the frequency of codons in a DNA sequence (private function).
-
-    A codon is a triplet of nucleotides. This function iterates through the
-    DNA sequence in steps of three and counts the occurrence of each codon.
-    The last one or two nucleotides are ignored if the sequence length is
-    not divisible by three.
-   
+    Calculate the frequency of each codon in a given DNA sequence.
+    A codon is a sequence of three nucleotides. This function counts the 
+    occurrences of each codon in the provided DNA sequence and returns a 
+    dictionary with codons as keys and their frequencies as values.
     Args:
-        sequence (str): A string representing a DNA sequence. The sequence
-                        is expected to contain only 'A', 'T', 'G', and 'C'.
+        sequence (str): A string representing the DNA sequence. The length 
+                        of the sequence should be a multiple of 3.
     Returns:
-        dict: A dictionary where keys are codons (triplets of nucleotides)
-              and values are their frequencies in the sequence.
+        dict: A dictionary where keys are codons (str) and values are their 
+              respective frequencies (int).
     Raises:
         ValueError: If the input sequence is empty.
     """
+    # Check if the sequence is empty and raise an error if it is
     if not sequence:
         raise ValueError("The sequence cannot be empty.")
-
-    # Initialize an empty dictionary to store codon frequencies
-    codon_freq = {}
-
-    # Iterate through the sequence in steps of three to extract codons
+    
+    # Initialize a defaultdict to count codon frequencies
+    codon_freq = defaultdict(int)
+    
+    # Iterate over the sequence in steps of 3 to count each codon
     for i in range(0, len(sequence) - len(sequence) % 3, 3):
-        codon = sequence[i:i+3]
-        if codon in codon_freq:
-            codon_freq[codon] += 1
-        else:
-            codon_freq[codon] = 1
-
-    return codon_freq
+        codon_freq[sequence[i:i+3]] += 1
+    
+    # Convert the defaultdict to a regular dictionary and return it
+    return dict(codon_freq)
 
 def _most_frequent_codon(codon_freqs: list) -> str:
     """
@@ -71,17 +67,25 @@ def _most_frequent_codon(codon_freqs: list) -> str:
                             values are their frequencies.
     Returns:
         str: The codon with the highest frequency among all dictionaries.
+    
+    Raises:
+        ValueError: If the input list is empty or contains empty dictionaries.
     """
+    if not codon_freqs:
+        raise ValueError("No codon frequencies provided.")
+    
     combined_freq = {}
     # Combine frequencies from all dictionaries
     for freq in codon_freqs:
+        if not freq:
+            continue
         for codon, count in freq.items():
             if codon in combined_freq:
                 combined_freq[codon] += count
             else:
                 combined_freq[codon] = count
     # Return the codon with the highest frequency
-    return max(combined_freq, key=combined_freq.get)
+    return "" if  max(combined_freq.values()) == 0 else max(combined_freq, key=combined_freq.get)
 
 def _longest_common_subsequence(word1: str, word2: str) -> str:
     """
@@ -162,14 +166,15 @@ def _process_txt_file(file_path: str) -> dict:
     # If there are multiple sequences, find the longest common subsequence (LCS)
    
     if len(sequences) > 1:
-        for seq1, seq2 in combinations(sequences, 2):
+        lcs_sequences = []
+        for i, j in combinations(range(len(sequences)), 2):  # Iterate over indices
+            seq1, seq2 = sequences[i], sequences[j]
             lcs_candidate = _longest_common_subsequence(seq1, seq2)
             if len(lcs_candidate) > len(lcs):
                 lcs = lcs_candidate
-                lcs_sequences = [sequences.index(seq1) + 1, sequences.index(seq2) + 1]
-            elif len(lcs_candidate) == len(lcs):
-                lcs_sequences.extend([sequences.index(seq1) + 1, sequences.index(seq2) + 1])
-                lcs_sequences = list(set(lcs_sequences))
+                # Store the 1-based indices of the first pair with the longest LCS
+                lcs_sequences = [i + 1, j + 1]
+            
     
     # Return the processed data as a dictionary
     return {

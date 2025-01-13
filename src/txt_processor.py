@@ -1,3 +1,4 @@
+from itertools import combinations
 
 def _gc_content(sequence: str) -> float:
     """
@@ -48,7 +49,7 @@ def _codon_frequency(sequence : str) -> dict:
     codon_freq = {}
 
     # Iterate through the sequence in steps of three to extract codons
-    for i in range(0, len(sequence) - 2, 3):
+    for i in range(0, len(sequence) - len(sequence) % 3, 3):
         codon = sequence[i:i+3]
         if codon in codon_freq:
             codon_freq[codon] += 1
@@ -136,26 +137,39 @@ def _process_txt_file(file_path: str) -> dict:
     with open(file_path, 'r') as file:
         sequences = [line.strip() for line in file.readlines() if line.strip()]
     
+    # Check if there are no valid sequences and raise an error if true
+    if len(sequences) == 0:
+        raise ValueError("No valid DNA sequences found in the file.")
+    
     sequence_data = []
     codon_frequencies = []
     
     # Process each sequence to calculate GC content and codon frequencies
     for seq in sequences:
-        gc_content = _gc_content(seq)
-        codon_freq = _codon_frequency(seq)
-        sequence_data.append({"gc_content": gc_content, "codons": codon_freq})
-        codon_frequencies.append(codon_freq)
+        try:
+            gc_content = _gc_content(seq)
+            codon_freq = _codon_frequency(seq)
+            sequence_data.append({"gc_content": gc_content, "codons": codon_freq})
+            codon_frequencies.append(codon_freq)
+        except ValueError as e:
+            continue
     
     # Determine the most common codon across all sequences
     most_common_codon = _most_frequent_codon(codon_frequencies)
     
     lcs = ""
+    lcs_sequences = []
     # If there are multiple sequences, find the longest common subsequence (LCS)
+   
     if len(sequences) > 1:
         for seq1, seq2 in combinations(sequences, 2):
             lcs_candidate = _longest_common_subsequence(seq1, seq2)
             if len(lcs_candidate) > len(lcs):
                 lcs = lcs_candidate
+                lcs_sequences = [sequences.index(seq1) + 1, sequences.index(seq2) + 1]
+            elif len(lcs_candidate) == len(lcs):
+                lcs_sequences.extend([sequences.index(seq1) + 1, sequences.index(seq2) + 1])
+                lcs_sequences = list(set(lcs_sequences))
     
     # Return the processed data as a dictionary
     return {
@@ -163,6 +177,24 @@ def _process_txt_file(file_path: str) -> dict:
         "most_common_codon": most_common_codon,
         "lcs": {
             "value": lcs,
+            "sequences": lcs_sequences,
             "length": len(lcs)
-             }
         }
+    }
+
+def process_dna_txt_file(file_path: str) -> dict:
+    """
+    Process a TXT file containing DNA sequences.
+    
+    Args:
+        file_path (str): Path to the TXT file.
+
+    Returns:
+        dict: Processed data including GC content, codon frequencies, most common codon, and LCS.
+    """
+    try:
+        return _process_txt_file(file_path)
+    except FileNotFoundError:
+        raise FileNotFoundError("The specified file was not found.")
+    except Exception as e:
+        raise Exception(f"An error occurred while processing the file: {str(e)}")

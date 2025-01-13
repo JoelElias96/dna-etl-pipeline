@@ -1,0 +1,12 @@
+/project
+├── /src
+│   ├── etl.py  (הלוגיקה המרכזית)
+│   ├── json_processor.py  (עיבוד קובצי JSON)
+│   ├── txt_processor.py  (עיבוד קובצי TXT)
+│   └── utils.py  (פונקציות עזר)
+├── /tests
+│   ├── test_etl.py
+│   ├── test_json_processor.py
+│   └── test_txt_processor.py
+├── README.md
+└── run.py

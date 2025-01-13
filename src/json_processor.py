@@ -14,19 +14,24 @@ def _remove_sensitive_data(data: dict) -> dict:
         dict: The sanitized JSON data.
     """
     if isinstance(data, dict):
+        # Recursively process dictionary items, removing keys that start with '_'
         return {
             key: _remove_sensitive_data(value)
             for key, value in data.items()
             if not key.startswith('_')
         }
     elif isinstance(data, list):
+        # Recursively process list items
         return [_remove_sensitive_data(item) for item in data]
     else:
+        # Return the data as is if it's neither a dict nor a list
         return data
 
-def _validate_lengths(data):
+def _validate_lengths_of_strs(data : dict)-> None:   
     """
     Ensure all string values in the JSON data are under 64 characters.
+    This function recursively checks all string values in the provided JSON data 
+    (dictionary or list) to ensure they do not exceed 64 characters in length.
 
     Args:
         data (dict): The JSON data.
@@ -34,14 +39,35 @@ def _validate_lengths(data):
     Raises:
         ValueError: If any string value exceeds 64 characters.
     """
+
+    def _validate_length_of_str(word : str) -> None:
+        if len(word) > 64:
+            raise ValueError(f"The string '{word}' exceeds 64 characters.")
+        
     if isinstance(data, dict):
+        # Iterate through dictionary items
+        
         for key, value in data.items():
-            if isinstance(value, str) and len(value) > 64:
-                raise ValueError(f"Value for '{key}' exceeds 64 characters.")
-            _validate_lengths(value)
+            # Check if the value is a string and its length exceeds 64 characters
+            if isinstance(value, str):
+                _validate_length_of_str(value)
+            
+            # Recursively validate lengths for nested dictionaries or lists
+            _validate_lengths_of_strs(value)
+
     elif isinstance(data, list):
+        # Iterate through list items and recursively validate lengths for list items
         for item in data:
-            _validate_lengths(item)
+
+            # Check if the value is a string and its length exceeds 64 characters
+            if isinstance(item, str):
+                _validate_length_of_str(item)
+            
+            _validate_lengths_of_strs(item)
+    
+    else:
+        # No action needed for non-dict and non-list items
+        pass
 
 def _validate_dates(data):
     """
@@ -103,7 +129,7 @@ def process(data):
         dict: The processed JSON data.
     """
     data = _remove_sensitive_data(data)
-    _validate_lengths(data)
+    _validate_lengths_of_strs(data)
     
     dob = data.get('individual_metadata', {}).get('date_of_birth')
     if dob:

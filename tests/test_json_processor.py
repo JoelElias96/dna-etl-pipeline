@@ -147,4 +147,90 @@ def test_remove_sensitive_data():
     }
     assert _remove_sensitive_data(metadata) == expected
 
+def test_validate_lengths():
+    from src.json_processor import _validate_lengths_of_strs
+
+    # Test case 1: Valid data with no string exceeding 64 characters
+    data = {
+        "name": "Alice",
+        "email": "alice@bob.com",
+        "details": {
+            "address": "123 Main Street",
+            "phone": "123-456-7890"
+        }
+    }
+    try:
+        _validate_lengths_of_strs(data)
+    except ValueError:
+        assert False, "Test case 1 failed!"
+
+    # Test case 2: String exceeding 64 characters in a flat dictionary
+    data = {
+        "name": "A" * 65,
+        "email": "alice@bob.com"
+    }
+    try:
+        _validate_lengths_of_strs(data)
+        assert False, "Test case 2 failed!"
+    except ValueError as e:
+        assert str(e) == "The string 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' exceeds 64 characters.", "Test case 2 failed!"
+
+    # Test case 3: String exceeding 64 characters in a nested dictionary
+    data = {
+        "details": {
+            "bio": "B" * 65
+        }
+    }
+    try:
+        _validate_lengths_of_strs(data)
+        assert False, "Test case 3 failed!"
+    except ValueError as e:
+        assert str(e) == "The string 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB' exceeds 64 characters.", "Test case 3 failed!"
+
+    # Test case 4: String exceeding 64 characters in a list
+    data = ["C" * 65, "Valid string"]
+    try:
+        _validate_lengths_of_strs(data)
+        assert False, "Test case 4 failed!"
+    except ValueError as e:
+        assert str(e) == "The string 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC' exceeds 64 characters.", "Test case 4 failed!"
+
+    # Test case 5: Mixed valid and invalid strings in a nested structure
+    data = {
+        "users": [
+            {"name": "Valid name"},
+            {"bio": "D" * 65}
+        ]
+    }
+    try:
+        _validate_lengths_of_strs(data)
+        assert False, "Test case 5 failed!"
+    except ValueError as e:
+        assert str(e) == "The string 'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD' exceeds 64 characters.", "Test case 5 failed!"
+
+    # Test case 6: Empty dictionary
+    data = {}
+    try:
+        _validate_lengths_of_strs(data)
+    except ValueError:
+        assert False, "Test case 6 failed!"
+
+    # Test case 7: Empty list
+    data = []
+    try:
+        _validate_lengths_of_strs(data)
+    except ValueError:
+        assert False, "Test case 7 failed!"
+
+    # Test case 8: Non-string values
+    data = {
+        "count": 123,
+        "active": True,
+        "items": [1, 2, 3]
+    }
+    try:
+        _validate_lengths_of_strs(data)
+    except ValueError:
+        assert False, "Test case 8 failed!"
+
 

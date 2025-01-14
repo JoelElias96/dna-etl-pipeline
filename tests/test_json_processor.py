@@ -151,7 +151,7 @@ class TestRemoveSensitiveData:
         }
         assert _remove_sensitive_data(metadata) == expected
 
-class TestValidateLengths:
+class TestValidateLengthsOfStrings:
 
     def test_valid_data_no_string_exceeding_64_characters(self):
         data = {

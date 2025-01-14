@@ -1,13 +1,20 @@
-/project
-├── /src
-│   ├── etl.py  (הלוגיקה המרכזית)
-│   ├── json_processor.py  (עיבוד קובצי JSON)
-│   ├── txt_processor.py  (עיבוד קובצי TXT)
-|   ├── file_validation.py (בדיקות על תקינות הקובץ)
-│   └── utils.py  (פונקציות עזר)
-├── /tests
-│   ├── test_etl.py
-│   ├── test_json_processor.py
-│   └── test_txt_processor.py
-├── README.md
-└── run.py
+project_root/
+├── etl/                            # Core ETL system
+│   ├── __init__.py
+│   ├── factory.py                  # Factory to create file processors
+│   ├── processor_base.py           # Base class/interface for file processors
+│   ├── json_processor.py           # Processor for JSON files
+│   ├── txt_processor.py            # Processor for TXT files
+│   ├── output_manager.py           # Handles writing the final merged JSON
+│
+├── tests/                          # Directory for tests
+│   ├── __init__.py
+│   ├── test_factory.py             # Unit tests for factory
+│   ├── test_json_processor.py      # Unit tests for JSON processing
+│   ├── test_txt_processor.py       # Unit tests for TXT processing
+│   ├── test_output_manager.py      # Unit tests for output manager
+│
+├── main.py                         # Entry point of the application
+├── requirements.txt                # Python dependencies
+├── README.md                       # Project documentation
+└── .gitignore                      # Files to ignore in version control

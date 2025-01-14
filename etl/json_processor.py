@@ -1,9 +1,37 @@
 import json
 from datetime import datetime
+from etl.file_processor import AbstrctFileProcessor
 
-class JSONProcessor:
+class JSONProcessor(AbstrctFileProcessor):
+    
+    """
+        JSONProcessor is a class for processing and sanitizing JSON files.
+        This class inherits from AbstractFileProcessor and provides methods to:
+        - Load and process a JSON file.
+        - Validate and sanitize JSON data.
+        - Ensure all strings are under 64 characters.
+        - Validate date formats and ranges.
+        - Ensure participants are at least 40 years old based on their date of birth.
+        - Remove sensitive information from the JSON data.
+        Methods:
+            __init__(file_path: str):
+                Initializes the JSONProcessor with the given file path.
+            process() -> dict:
+                Loads and processes the JSON file, returning the sanitized and validated data.
+            _process_json_data(data: dict) -> dict:
+                Processes the JSON data by removing sensitive data, validating lengths, dates,
+            _remove_sensitive_data(data: dict) -> dict:
+                Removes sensitive fields from the JSON data.
+            _validate_lengths_of_strs(data: dict) -> None:
+                Ensures all string values in the JSON data are under 64 characters.
+            _validate_dates_in_file(data: dict) -> None:
+                Validates date fields in the JSON data to ensure they are in the correct format
+                and within the allowed range.
+            _validate_age(i_birth_date: str) -> None:
+                Ensures the participant is at least 40 years old based on their date of birth.
+    """
     def __init__(self, file_path: str):
-        self.file_path = file_path
+        super().__init__(file_path)
 
     def process(self) -> dict:
         """

@@ -1,10 +1,35 @@
 from itertools import combinations
 from collections import defaultdict
+from etl.file_processor import AbstrctFileProcessor
 
-class TXTProcessor:
+class TXTProcessor(AbstrctFileProcessor):
+    """
+    TXTProcessor is a class for processing DNA sequences from a text file to compute various metrics and statistics.
+    This class inherits from AbstrctFileProcessor and provides methods to:
+    1. Load DNA sequences from a file.
+    2. Compute the GC content and codon frequency for each sequence.
+    3. Determine the most common codon across all sequences.
+    4. Compute the longest common subsequence (LCS) among all sequences.
+    Attributes:
+        file_path (str): The path to the file containing DNA sequences.
+    Methods:
+        process() -> dict:
+            Returns a dictionary containing the processed data.
+        _load_sequences() -> list:
+            Loads DNA sequences from a file and returns a list of non-empty sequences.
+        _gc_content(sequence: str) -> float:
+            Calculates the GC content of a DNA sequence.
+        _codon_frequency(sequence: str) -> dict:
+            Calculates the frequency of each codon in a given DNA sequence.
+        _most_frequent_codon(codon_freqs: list) -> str:
+            Finds the most frequent codon among a list of codon frequency dictionaries.
+        _longest_common_subsequence_among_all(sequences: list) -> tuple:
+        _lcs_between_two(word1: str, word2: str) -> str:
+            Finds the longest continuous common subsequence (substring) between two strings.
+    """
 
     def __init__(self, file_path: str):
-        self.file_path = file_path
+        super().__init__(file_path)
 
     def process(self) -> dict:
         """

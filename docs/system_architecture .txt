@@ -3,6 +3,7 @@
 │   ├── etl.py  (הלוגיקה המרכזית)
 │   ├── json_processor.py  (עיבוד קובצי JSON)
 │   ├── txt_processor.py  (עיבוד קובצי TXT)
+|   ├── file_validation.py (בדיקות על תקינות הקובץ)
 │   └── utils.py  (פונקציות עזר)
 ├── /tests
 │   ├── test_etl.py

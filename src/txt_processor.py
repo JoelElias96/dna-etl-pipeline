@@ -195,12 +195,44 @@ def _process_txt_file(file_path: str) -> dict:
 def process_dna_txt_file(file_path: str) -> dict:
     """
     Process a TXT file containing DNA sequences.
-    
+
+    This function analyzes DNA sequences from a TXT file, performing the following steps:
+    1. Calculate GC content and codon frequencies for each sequence.
+    2. Identify the most common codon across all sequences.
+    3. Determine the longest continuous common subsequence (LCS) between sequences (if multiple exist).
+
     Args:
-        file_path (str): Path to the TXT file.
+        file_path (str): Path to the TXT file containing DNA sequences.
 
     Returns:
-        dict: Processed data including GC content, codon frequencies, most common codon, and LCS.
+        dict: A dictionary with:
+            - `"sequences"`: List of GC content and codon frequency data for each sequence.
+            - `"most_common_codon"`: The most frequently occurring codon.
+            - `"lcs"`: The longest common subsequence, its length, and contributing sequences.
+
+    Raises:
+        FileNotFoundError: If the file is not found.
+        ValueError: If the file contains no valid DNA sequences.
+        Exception: For any other processing errors.
+
+    Example:
+        Input file (`dna_sequences.txt`):
+            ATGCGTACG
+            GCGTACGAT
+
+        Output:
+            {
+                "sequences": [
+                    {"gc_content": 55.56, "codons": {"ATG": 1, "CGT": 1, "ACG": 1}},
+                    {"gc_content": 66.67, "codons": {"GCG": 1, "TAC": 1, "GAT": 1}}
+                ],
+                "most_common_codon": "GCG",
+                "lcs": {
+                    "value": "GCGTAC",
+                    "sequences": [1, 2],
+                    "length": 6
+                }
+            }
     """
     try:
         return _process_txt_file(file_path)

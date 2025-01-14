@@ -1,7 +1,7 @@
 import pytest
 import json
 from datetime import datetime
-from src.json_processor import JSONProcessor
+from etl.json_processor import JSONProcessor
 
 #THE JSONPROCESSOR BECAME A CLASS WITH AN INSTNCE, TO CREATE IT WE NEED TO GIVE IT A PATH/DUMMY PATH LETS CHANGE THE TEST OF THE  CLASS TestValidateLengthsOfStrings AND ALSO OF TestValidateDates
 class TestRemoveSensitiveData:

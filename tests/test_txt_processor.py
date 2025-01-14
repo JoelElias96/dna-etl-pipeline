@@ -1,5 +1,5 @@
 import pytest
-from src.txt_processor import TXTProcessor
+from etl.txt_processor import TXTProcessor
 
 class TestGCContent:
     

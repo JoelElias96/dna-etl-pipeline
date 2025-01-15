@@ -72,6 +72,15 @@ class InputValidator:
         except ValueError as error:
             raise ValueError(f"Input validation failed: {error}")
 
+    def get_this_uuid(self) -> str:
+        """
+        Get the current UUID being processed.
+
+        Returns:
+            str: The current UUID.
+        """
+        return self.current_uuid
+    
     def _normalize_paths(self) -> None:
         """
         Normalize and validate a given path to ensure it works across platforms.

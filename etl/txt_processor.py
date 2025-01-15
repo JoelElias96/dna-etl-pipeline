@@ -55,7 +55,13 @@ class TXTProcessor(AbstrctFileProcessor):
             ValueError: If no codon frequencies are provided when determining the most frequent codon.
         """
         # Load sequences from the file
-        sequences = self._load_sequences()
+        try:
+            sequences = self._load_sequences()
+        except FileNotFoundError:
+            raise FileNotFoundError(f"File not found: {self.file_path}")
+        except ValueError as e:
+            raise ValueError(f"Invalid data in file: {str(e)}")
+        
         sequence_data = []
         codon_frequencies = []
 

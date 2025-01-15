@@ -1,5 +1,6 @@
 from etl.etl_manager import ETLManager
-from tests.test_files_creator import create_dir_for_test_files
+from tests.test_files_creator import create_dir_for_test_files_1
+
 
 def main() -> None:
     try:
@@ -11,10 +12,9 @@ def main() -> None:
     except Exception as e:
         print(f"Error: {e}")
 
+
 def create_data():
-    context_path = "tests/test_files"
-    user_id = "f3324a99-8a63-4ada-9d1d-562f84c7636c"
-    data=create_dir_for_test_files(context_path, user_id)
+    data = create_dir_for_test_files_1()
     return data
 
 

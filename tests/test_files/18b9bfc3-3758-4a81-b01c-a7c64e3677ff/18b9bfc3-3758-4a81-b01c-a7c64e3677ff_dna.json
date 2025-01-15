@@ -28,8 +28,8 @@
         }
     },
     "individual_metadata": {
-        "_individual_id": "IND123456",
-        "_name": "John Smith",
+        "individual_id": "IND123456",
+        "name": "John Smith",
         "date_of_birth": "1984-05-15",
         "gender": "Male",
         "ethnicity": "Caucasian",

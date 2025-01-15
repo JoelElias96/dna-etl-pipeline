@@ -1,5 +1,6 @@
 import json
 import os
+import uuid
 
 
 def create_sample_json(context_path, file_content, user_id):
@@ -25,8 +26,25 @@ def create_sample_txt(context_path, file_content, user_id):
     print(f"Sample TXT file created at: {txt_file_path}")
 
 
-def create_dir_for_test_files(context_path, user_id):
-    sample_json = {
+def create_dir_for_test_files_1():
+    user_id = str(uuid.uuid4())  # Ensure UUID is converted to string
+    context_path = f"tests/test_files/{user_id}"
+    result_path = f"tests/test_files/{user_id}/out"
+    
+    # Create the context path directory
+    os.makedirs(context_path, exist_ok=True)
+    
+    # Create the out directory inside the context path
+    os.makedirs(result_path, exist_ok=True)
+
+    create_sample_json(context_path, get_sample_json_1(), user_id)
+    create_sample_txt(context_path, get_sample_txt_1(), user_id)
+    
+    return {"context_path": context_path, "results_path": result_path}
+
+
+def get_sample_json_1() -> dict:
+    return {
         "test_metadata": {
             "test_id": "DNA123456",
             "test_type": "Genetic Analysis",
@@ -77,7 +95,7 @@ def create_dir_for_test_files(context_path, user_id):
             }
         }
     }
-    sample_txt = "ATCGATCGTAGCTAGCTAGCTGATCGATCGAT\nATCGGTAAATGCCTGAAAGATG"
 
-    create_sample_json(context_path, sample_json, user_id)
-    create_sample_txt(context_path, sample_txt, user_id)
+
+def get_sample_txt_1() -> str:
+    return "ATCGATCGTAGCTAGCTAGCTGATCGATCGAT\nATCGGTAAATGCCTGAAAGATG"

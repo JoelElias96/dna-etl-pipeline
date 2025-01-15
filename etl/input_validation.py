@@ -237,8 +237,7 @@ class InputValidator:
     ]
         if not self.files:
             raise ValueError(f"The context_path directory is empty: {self.context_path}")
-        if len(self.files) > self.num_of_files or len(self.files) < self.num_of_files:
-            raise ValueError(f"The context_path directory {self.context_path} contains more than {self.num_of_files} files.")
+
         
     def _validate_file_extensions(self):
         """

@@ -21,49 +21,41 @@ class ETLManager:
         self.processed_results = {}
         self.final_results = {}
 
-
     def process(self) -> None:
-       
         try:
-            # Catch the start time before processing
+                # Catch the start time before processing
+                self.start_time = datetime.utcnow().isoformat()
 
-            self.start_time = datetime.utcnow().isoformat()
+                # Step 1: Validate input and extract files and participant ID
+                files = self.validator.validate()
+                self.participant_id = self.validator.get_this_uuid()
 
-            # Step 1: Validate input and extract files and participant ID
+                # Step 2: Process each file using the appropriate processor
+                for file in files:
+                    # Extract the file extension
+                    file_extension = file.split('.')[-1].lower()
 
-            files = self.validator.validate()
-            self.participant_id = self.validator.get_this_uuid()
+                    # Instantiate the processor with the file path
+                    processor = ProcessorFactory.create_processor(os.path.join(self.input_data["context_path"], file), file_extension)
 
-            # Step 2: Process each file using the appropriate processor
-           
-            for file in files:
+                    # Raise an error if no processor is found for the file extension
+                    if not processor:
+                        raise ValueError(f"No processor found for {file_extension} files.")
 
-                # Extract the file extension
-                file_extension = file.split('.')[-1].lower() 
+                    # Process the file and store the result
+                    self.processed_results[file_extension] = processor.process()
 
-                # Instantiate the processor with the file path
-                processor = ProcessorFactory.create_processor(os.path.join(self.input_data["context_path"], file), file_extension)
+                # Catch the end time after processing
+                self.end_time = datetime.utcnow().isoformat()
 
-                # Raise an error if no processor is found for the file extension
-                if not processor:
-                    raise ValueError(f"No processor found for {file_extension} files.")
-            
-                
-                # Process the file and store the result
-                self.processed_results[file_extension] = processor.process()
-                
-            # Catch the end time after processing
-            self.end_time = datetime.utcnow().isoformat()
+                # Step 3: Combine results
+                self._create_result_dictionary()
 
-            # Step 3: Combine results
-            self._create_result_dictionary()
+                # Step 4: Save the results to a file
+                output_file = os.path.join(self.input_data["results_path"], f"{self.participant_id}_result.json")
+                with open(output_file, "w") as f:
+                    json.dump(self.final_results, f, indent=4)
 
-            # Step 4: Save the results to a file
-            output_file = os.path.join(self.input_data["results_path"], f"{self.participant_id}_result.json")
-            with open(output_file, "w") as f:
-                json.dump(self.final_results, f, indent=4)
-
-  
         except Exception as e:
             raise RuntimeError(f"ETL process failed: {e}")
 

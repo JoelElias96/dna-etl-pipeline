@@ -26,7 +26,6 @@ class InputValidator:
     """
  
     
-
     def __init__(self, input_data: Dict, validate_extentions : List[str], num_of_files: int =0) -> None:
         """
         Initialize the validator with the input data.
@@ -66,8 +65,9 @@ class InputValidator:
         try:
             self._validate_structure()
             self._validate_paths()
-            self._extract_uuid_and_check_validity
+            self._extract_uuid_and_check_validity()
             self._validate_files()
+            self.files.sort()
             return self.files
         except ValueError as error:
             raise ValueError(f"Input validation failed: {error}")
@@ -205,16 +205,14 @@ class InputValidator:
         # Group files by UUID
         for file in self.files:
             # Extract UUID from the file name
-            uuid = file.rsplit("_", 1)[0]  
+            uuid = file.split("_", 1)[0]  
             # Add the file to the mapping
-            if uuid == self.current_uuid:
-                self.files.append(file)
-            else:
+            if uuid != self.current_uuid:
                 raise ValueError(f"UUID {uuid} does not match the current UUID {self.current_uuid}, there is a file with a different UUID in the context_path directory.")
             
 
         self._validate_file_extensions()
-
+ 
     def _make_files_list(self): 
         """
         Validate files in the context_path and organize them by UUID.
@@ -237,7 +235,7 @@ class InputValidator:
             ValueError: If the file extensions are invalid or if there are not exactly one file per required extension.
         """
 
-        for file in self.files():
+        for file in self.files:
             # Extract the file extension
             file_extension = file.split(".")[-1]
             # Check if the file extension is valid

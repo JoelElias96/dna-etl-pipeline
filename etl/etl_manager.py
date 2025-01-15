@@ -15,7 +15,6 @@ class ETLManager:
             self.validator = InputValidator(input_data, validate_extensions)
         else:
             self.validator = InputValidator(input_data, validate_extensions, number_of_file)
-        self.validator = InputValidator(input_data, validate_extensions)
         self.participant_id = None
         self.start_time= None
         self.end_time = None
@@ -42,15 +41,13 @@ class ETLManager:
                 # Extract the file extension
                 file_extension = file.split('.')[-1].lower() 
 
-                # Get the appropriate processor class for the file extension
-                processor_class = ProcessorFactory.create_processor(file_extension)
+                # Instantiate the processor with the file path
+                processor = ProcessorFactory.create_processor(os.path.join(self.input_data["context_path"], file), file_extension)
 
                 # Raise an error if no processor is found for the file extension
-                if not processor_class:
+                if not processor:
                     raise ValueError(f"No processor found for {file_extension} files.")
-                
-                # Instantiate the processor with the file path
-                processor = processor_class(os.path.join(self.input_data["context_path"], file))
+            
                 
                 # Process the file and store the result
                 self.processed_results[file_extension] = processor.process()
@@ -59,10 +56,10 @@ class ETLManager:
             self.end_time = datetime.utcnow().isoformat()
 
             # Step 3: Combine results
-            self._create_result_dictionary(self.processed_results)
+            self._create_result_dictionary()
 
             # Step 4: Save the results to a file
-            output_file = os.path.join(self.input_data["results_path"], "result.json")
+            output_file = os.path.join(self.input_data["results_path"], f"{self.participant_id}_result.json")
             with open(output_file, "w") as f:
                 json.dump(self.final_results, f, indent=4)
 

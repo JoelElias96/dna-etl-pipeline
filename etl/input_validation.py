@@ -230,7 +230,11 @@ class InputValidator:
             ValueError: If the context_path directory is empty
             ValueError: If the context_path directory contains more or less than num_of_files files.
         """
-        self.files = os.listdir(self.context_path)
+        self.files = [
+        f for f in os.listdir(self.context_path)
+        if os.path.isfile(os.path.join(self.context_path, f)) and
+           f.split('.')[-1] in self.validate_extentions
+    ]
         if not self.files:
             raise ValueError(f"The context_path directory is empty: {self.context_path}")
         if len(self.files) > self.num_of_files or len(self.files) < self.num_of_files:

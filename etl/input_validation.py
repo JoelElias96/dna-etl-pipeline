@@ -25,7 +25,6 @@ class InputValidator:
             Validates the input data, paths, and files, and returns a UUID-to-file mapping.
     """
  
-    
     def __init__(self, input_data: Dict, validate_extentions : List[str], num_of_files: int =0) -> None:
         """
         Initialize the validator with the input data.
@@ -237,8 +236,7 @@ class InputValidator:
     ]
         if not self.files:
             raise ValueError(f"The context_path directory is empty: {self.context_path}")
-
-        
+  
     def _validate_file_extensions(self):
         """
         Validate the file extensions for each UUID.

@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Tuple, List
 
 
-class Extract:
+class Extractor:
     """
     A class responsible for extracting files and the UUID from a given context path.
 
@@ -62,7 +62,11 @@ class Extract:
         :return: A list of filenames in the context directory.
         :rtype: List[str]
         """
-        files_list = os.listdir(context_path)
+        # Adds files to the list if they are files (not directories)
+        files_list = [
+                        f for f in os.listdir(context_path)
+                        if os.path.isfile(os.path.join(context_path, f))
+                    ]
         return files_list
 
     def _extract_uuid(self, context_path: str) -> str:

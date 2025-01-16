@@ -36,7 +36,7 @@ class Transform:
         self.input_data = input_data
         self.processed_results = {}
 
-    def transform_data(self) -> Dict:
+    def transformer(self) -> Dict:
         """
         Transforms the data from the provided files using the appropriate processor based on their extensions.
 

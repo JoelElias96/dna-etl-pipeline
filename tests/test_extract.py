@@ -1,4 +1,4 @@
-from pipeline.extract import Extract
+from pipeline.extract import Extractor
 
 
 class TestExtractFiles:
@@ -14,7 +14,7 @@ class TestExtractFiles:
         file2.write_text("data2")
         # Initialize the Extract class with the input data
         input_data = {"context_path": str(context_path)}
-        extract = Extract(input_data)
+        extract = Extractor(input_data)
         # Extract the files from the context path
         files_list = extract._extract_files(context_path)
         # Check if the files are extracted correctly
@@ -44,7 +44,7 @@ class TestExtractFiles:
 
         # Initialize the Extract class with the input data
         input_data = {"context_path": str(context_path)}
-        extract = Extract(input_data)
+        extract = Extractor(input_data)
         # Extract the files from the context path
         files_list = extract._extract_files(context_path)
         # Check if the files are extracted correctly
@@ -64,7 +64,7 @@ class TestExtract:
         file2.write_text("data2")
         # Initialize the Extract class with the input data
         input_data = {"context_path": str(context_path)}
-        extract = Extract(input_data)
+        extract = Extractor(input_data)
         # Extract the files and the UUID from the context path
         files_list, uuid = extract.extract()
         # Check if the files and UUID are extracted correctly

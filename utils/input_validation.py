@@ -21,13 +21,17 @@ class InputValidator:
         results_path (str): Path to the directory where results are stored.
         file_mapping (dict): A mapping of UUIDs to their associated file paths.
         files (list): List of files in the 'context_path' directory.
+        current_uuid (str): The UUID extracted from the context_path and results_path.
+
 
     Methods:
         validate() -> dict:
             Validates the input data, paths, and files, and returns a UUID-to-file mapping.
     """
 
-    def __init__(self, input_data: Dict, validate_extentions: List[str], num_of_files: int = 0) -> None:
+    def __init__(
+                self, input_data: Dict, validate_extentions: List[str],
+                num_of_files: int = 0, LIMIT_FILES: bool = False) -> None:
         """
         Initialize the validator with the input data.
 
@@ -37,6 +41,7 @@ class InputValidator:
         :type validate_extentions: list[str]
         :param num_of_files: The maximum number of files to validate for each UUID. (optional)
         :type num_of_files: int
+        :param LIMIT_FILES: A boolean flag to limit the number of files to validate. (optional)
         """
 
         self.input_data = input_data
@@ -45,7 +50,8 @@ class InputValidator:
         self.current_uuid = ""
         self.valid_extentions = set(validate_extentions)
         self.files = []
-        self.num_of_files = len(self.valid_extentions) if num_of_files == 0 else num_of_files
+        self.num_of_files = num_of_files
+        self.LIMIT_FILES = LIMIT_FILES
 
     def validate(self) -> None:
         """
@@ -239,6 +245,9 @@ class InputValidator:
         if not self.files:
             raise ValueError(f"The context_path directory is empty: {self.context_path}")
         self._validate_file_extensions()
+
+        if self.LIMIT_FILES and len(self.files) > self.num_of_files:
+            raise ValueError(f"Number of files in the context_path directory is greater than {self.num_of_files}")
 
     def _validate_file_extensions(self):
         """

@@ -1,7 +1,8 @@
 import json
+from typing import Dict
 
 
-class Load:
+class Loader:
     """
     A class responsible for loading results into a JSON file.
 
@@ -15,7 +16,7 @@ class Load:
             Saves the provided participant data into the specified JSON output file.
     """
 
-    def __init__(self, results_path):
+    def __init__(self, results_path: str) -> None:
         """
         Initialize the Load class with the path where the results should be saved.
 
@@ -24,7 +25,7 @@ class Load:
         """
         self.results_path = results_path
 
-    def load_results(self, participant_data, output_file):
+    def load(self, final_result: Dict, output_file: str) -> None:
         """
         Saves the provided participant data into the specified output file in JSON format.
 
@@ -38,4 +39,4 @@ class Load:
         """
         # Save the results to a JSON file
         with open(output_file, "w") as f:
-            json.dump(participant_data, f, indent=4)
+            json.dump(final_result, f, indent=4)

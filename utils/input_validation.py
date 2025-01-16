@@ -1,7 +1,7 @@
 import os
 import uuid
 import re
-from typing import List, Dict, Tuple
+from typing import List, Dict
 from pathlib import Path
 
 
@@ -47,7 +47,7 @@ class InputValidator:
         self.files = []
         self.num_of_files = len(self.valid_extentions) if num_of_files == 0 else num_of_files
 
-    def validate(self) -> Tuple[List[str], str]:
+    def validate(self) -> None:
         """
         Validates the input data and organizes files by their UUIDs.
 

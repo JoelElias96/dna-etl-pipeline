@@ -19,7 +19,7 @@ def create_sample_txt(context_path, file_content, user_id):
     Creates a valid TXT file in the context path.
     """
 
-    txt_file_path = os.path.join(context_path, f"{user_id}_dna.txt")
+    txt_file_path = os.path.join(context_path, f"{user_id}abcdefg_dna.txt")
     with open(txt_file_path, "w") as f:
         f.write(file_content)
 
@@ -81,7 +81,7 @@ def get_sample_json_1(context_path):
     },
     "individual_metadata": {
         "_individual_id": "IND456",
-        "_name": "George Brown",
+        "_name": "David Smith",
         "date_of_birth": "1933-05-10",
         "gender": "Male",
         "ethnicity": "Caucasian"
@@ -94,10 +94,6 @@ def get_sample_json_1(context_path):
                 "name": "Amlodipine",
                 "dose": "5 mg daily"
             },
-            {
-                "name": "Atorvastatin",
-                "dose": "10 mg daily"
-            }
         ],
         "doctor": "Dr. Jane Carter"
     },
@@ -107,12 +103,6 @@ def get_sample_json_1(context_path):
         "diet": "Low salt, high fiber diet",
         "sleep": "7-8 hours of sleep nightly"
     },
-    "biomarker_data": {
-        "blood_pressure": "125/80 mmHg",
-        "cholesterol": "180 mg/dL",
-        "blood_sugar": "90 mg/dL",
-        "eGFR": "85 mL/min/1.73m²"
-    }
 }
 
 
@@ -124,5 +114,5 @@ def get_sample_json_1(context_path):
 def get_sample_txt_1() -> str:
     return ("ACGAGTAGAGGAGTGCTGGCGACACACACACACACTAGGACAGGATCGGAGTACAGGAGGTAGCAGTGAGGAGTCAGTAGGCAGTGTAGCGTGAAGCA\n"
             "GTGACTAGCGTAGAGGACGAGTAGTTCAGGTAGGAGCAGTCAGGAGACGTGCGTGAAGTACGAGTAGGTCAGTGCAGAGTACGC\n"
-            "TGCGAGCGACTAAGAAAAAAAAAAAAAAAGAGTCAGTAGCGTAGGATACGTAGGAGGAGGTGACCTAGAGGACTTAGGAGGTGCGTAGGGAGTGAAGT\n"
+            "TGCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAGCGACTAAGAAAAAAAAAAAAAAAGAGTCAGTAGCGTAGGATACGTAGGAGGAGGTGACCTAGAGGACTTAGGAGGTGCGTAGGGAGTGAAGT\n"
             )

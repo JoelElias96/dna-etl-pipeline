@@ -1,13 +1,11 @@
 from pipeline.etl_manager import ETLManager
+from tests.test_files_creator import create_dir_for_test_files_1
 from tkinter import messagebox
 
 
 def main() -> None:
     try:
-        data = {
-                    "context_path": "./data/participants/12ba71a0-30f4-464e-ba1b-9a31ea7d35fc",
-                    "results_path": "./data/participants/12ba71a0-30f4-464e-ba1b-9a31ea7d35fc/out"
-                }
+        data = create_dir_for_test_files_1()
         etl_manager = ETLManager(data)
         etl_manager.process()
         print("ETL process completed successfully.")

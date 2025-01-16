@@ -1,5 +1,5 @@
-from pipeline.metadata_json_processor import MetadataJsonProcessor
-from pipeline.dna_txt_file_processor import DNATxtFileProcessor
+from pipeline.processors.test_metadata_json_processor import TestMetadataJsonProcessor
+from pipeline.processors.dna_sequence_txt_processor import DNASequenceTxtProcessor
 
 
 class FileProcessorFactory:
@@ -19,8 +19,8 @@ class FileProcessorFactory:
             ValueError: If the file type is not supported.
         """
         if file_type.lower() == 'json':
-            return MetadataJsonProcessor(file_path)
+            return TestMetadataJsonProcessor(file_path)
         elif file_type.lower() == 'txt':
-            return DNATxtFileProcessor(file_path)
+            return DNASequenceTxtProcessor(file_path)
         else:
             raise ValueError(f"Unsupported file type: {file_type}")

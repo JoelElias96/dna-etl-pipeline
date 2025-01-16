@@ -1,5 +1,5 @@
 import pytest
-from pipeline.file_processor_factory import FileProcessorFactory
+from pipeline.processors.file_processor_factory import FileProcessorFactory
 
 
 class TestProcessorFactory:

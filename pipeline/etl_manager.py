@@ -66,7 +66,8 @@ class ETLManager:
                 json.dump(self.final_results, f, indent=4)
             
             print(f"Results saved to: {output_file}")
-
+        except ValueError as e:
+            raise ValueError(f"ETL process failed: {e}")
         except Exception as e:
             raise RuntimeError(f"ETL process failed: {e}")
 

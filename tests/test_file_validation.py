@@ -1,7 +1,7 @@
 import pytest
 import uuid
 from pathlib import Path
-from etl.input_validation import InputValidator
+from utils.input_validation import InputValidator
 
 
 class TestValidationStructure:
@@ -452,4 +452,4 @@ class TestValidateMethod:
         expected_result = [f"{context_uuid}_dna.txt", f"{context_uuid}_dna.json"]
         
         expected_result.sort()  # Sort only the expected result
-        assert result == expected_result
+        assert result == (expected_result, context_uuid)

@@ -3,7 +3,7 @@ import os
 import json
 import uuid
 from typing import List
-from etl.etl_manager import ETLManager
+from pipeline.etl_manager import ETLManager
 
 
 class TestETLManager:
@@ -62,7 +62,7 @@ class TestETLManager:
         ]
         input_data = self.setup_files(tmp_path, uuid, files_content=files_content)
 
-        etl_manager = ETLManager(input_data, number_of_file=2)
+        etl_manager = ETLManager(input_data, number_of_files=2)
 
         with pytest.raises(RuntimeError):
             etl_manager.process()
@@ -83,7 +83,7 @@ class TestETLManager:
         ]
         input_data = self.setup_files(tmp_path, uuid, files_content=files_content)
 
-        etl_manager = ETLManager(input_data, number_of_file=2)
+        etl_manager = ETLManager(input_data, number_of_files=2)
 
         etl_manager.process()
 
@@ -106,7 +106,7 @@ class TestETLManager:
         ]
         input_data = self.setup_files(tmp_path, uuid, files_content=files_content)
 
-        etl_manager = ETLManager(input_data, number_of_file=2)
+        etl_manager = ETLManager(input_data, number_of_files=2)
 
         # Process once
         etl_manager.process()
@@ -132,7 +132,7 @@ class TestETLManager:
         ]
         input_data = self.setup_files(tmp_path, uuid, files_content=files_content)
 
-        etl_manager = ETLManager(input_data, number_of_file=2)
+        etl_manager = ETLManager(input_data, number_of_files=2)
 
         with pytest.raises(RuntimeError):
             etl_manager.process()

@@ -1,9 +1,9 @@
 from itertools import combinations
 from collections import defaultdict
-from pipeline.file_processor import AbstrctFileProcessor
+from utils.file_processor import AbstrctFileProcessor
 
 
-class TXTProcessor(AbstrctFileProcessor):
+class DNATxtFileProcessor(AbstrctFileProcessor):
     """
     TXTProcessor is a class for processing DNA sequences from a text file to compute various metrics and statistics.
     This class inherits from AbstrctFileProcessor and provides methods to:

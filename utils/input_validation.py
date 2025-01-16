@@ -86,6 +86,10 @@ class InputValidator:
         except Exception as e:
             raise ValueError(f"Error resolving path {self.context_path}: {e}")
 
+        try:
+            # Create a Path object and resolve the absolute path
+            self.results_path = str(Path(self.results_path).resolve(strict=False))
+        except Exception as e:
             raise ValueError(f"Error resolving path {self.results_path}: {e}")
 
     def _extract_uuid_and_check_validity(self) -> None:

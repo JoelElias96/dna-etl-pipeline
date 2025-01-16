@@ -1,10 +1,10 @@
 import json
 from datetime import datetime
-from pipeline.file_processor import AbstrctFileProcessor
+from utils.file_processor import AbstrctFileProcessor
 import os
 
 
-class JSONProcessor(AbstrctFileProcessor):
+class MetadataJsonProcessor(AbstrctFileProcessor):
     
     """
         JSONProcessor is a class for processing and sanitizing JSON files.

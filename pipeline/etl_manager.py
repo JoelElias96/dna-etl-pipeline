@@ -1,7 +1,7 @@
 import os
 import json
 from datetime import datetime
-from pipeline.processor_factory import ProcessorFactory
+from pipeline.file_processor_factory import FileProcessorFactory
 from utils.input_validation import InputValidator
 from typing import List, Dict
 
@@ -45,7 +45,7 @@ class ETLManager:
                 file_extension = file.split('.')[-1].lower()
 
                 # Instantiate the processor with the file path
-                processor = ProcessorFactory.create_processor(os.path.join(self.input_data["context_path"], file), file_extension)
+                processor = FileProcessorFactory.create_processor(os.path.join(self.input_data["context_path"], file), file_extension)
 
                 # Raise an error if no processor is found for the file extension
                 if not processor:

@@ -13,7 +13,7 @@ def main() -> None:
         print("ETL process completed successfully.")
 
     except Exception as e:
-        messagebox.showerror("Error", f"Error: {e}")
+        messagebox.showerror("ERROR", e)
 
 
 if __name__ == "__main__":

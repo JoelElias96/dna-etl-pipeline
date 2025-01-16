@@ -1,21 +1,19 @@
-from etl.etl_manager import ETLManager
-from tests.test_files_creator import create_dir_for_test_files_1
+from pipeline.etl_manager import ETLManager
+from tkinter import messagebox
 
 
 def main() -> None:
     try:
-        data = create_data()     
+        data = {
+                    "context_path": "./data/participants/12ba71a0-30f4-464e-ba1b-9a31ea7d35fc",
+                    "results_path": "./data/participants/12ba71a0-30f4-464e-ba1b-9a31ea7d35fc/out"
+                }
         etl_manager = ETLManager(data)
         etl_manager.process()
         print("ETL process completed successfully.")
 
     except Exception as e:
-        print(f"Error: {e}")
-
-
-def create_data():
-    data = create_dir_for_test_files_1()
-    return data
+        messagebox.showerror("Error", f"Error: {e}")
 
 
 if __name__ == "__main__":

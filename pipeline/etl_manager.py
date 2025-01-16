@@ -1,21 +1,30 @@
 import os
 import json
 from datetime import datetime
-from etl.processor_factory import ProcessorFactory
-from etl.input_validation import InputValidator
-from typing import Dict, List
+from pipeline.processor_factory import ProcessorFactory
+from utils.input_validation import InputValidator
+from typing import List, Dict
 
 
 class ETLManager:  
+
     def __init__(self, input_data: Dict, 
                  validate_extensions: List[str] = ["txt", "json"],
-                 number_of_file: int = -1) -> None:        
+                 number_of_files: int = -1) -> None:
+        """
+        Initialize the ETLManager with the input data and the file extensions to validate.
+        :param input_data: A dictionary containing the context path and results path.
+        :param validate_extensions: A list of file extensions to validate.
+        :param number_of_file: The number of files to validate. If -1, all files will be validated.
+        """  
+      
         self.input_data = input_data
         self.validate_extensions = validate_extensions
-        if number_of_file == -1:
+        # Create an instance of the InputValidator
+        if number_of_files == -1:
             self.validator = InputValidator(input_data, validate_extensions)
         else:
-            self.validator = InputValidator(input_data, validate_extensions, number_of_file)
+            self.validator = InputValidator(input_data, validate_extensions, number_of_files)
         self.participant_id = None
         self.start_time = None
         self.end_time = None
@@ -28,8 +37,7 @@ class ETLManager:
             self.start_time = datetime.utcnow().isoformat()
 
             # Step 1: Validate input and extract files and participant ID
-            files = self.validator.validate()
-            self.participant_id = self.validator.get_this_uuid()
+            files, self.participant_id = self.validator.validate()
 
             # Step 2: Process each file using the appropriate processor
             for file in files:
@@ -56,6 +64,8 @@ class ETLManager:
             output_file = os.path.join(self.input_data["results_path"], f"{self.participant_id}_result.json")
             with open(output_file, "w") as f:
                 json.dump(self.final_results, f, indent=4)
+            
+            print(f"Results saved to: {output_file}")
 
         except Exception as e:
             raise RuntimeError(f"ETL process failed: {e}")

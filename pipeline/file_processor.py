@@ -1,17 +1,17 @@
 from abc import ABC, abstractmethod
 
+
 class AbstrctFileProcessor(ABC):
     """
     Abstract Base Class for file processors.
     Defines the interface that all file processors must implement.
+    contains the abstract method process() that must be implemented by subclasses.
     """
 
     def __init__(self, file_path: str):
         """
         Initialize the file processor with the given file path.
-        
-        Args:
-            file_path (str): The path to the file to be processed.
+        :param file_path: The path to the file to be processed
         """
         self.file_path = file_path
 

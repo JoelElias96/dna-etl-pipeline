@@ -1,6 +1,7 @@
 from itertools import combinations
 from collections import defaultdict
-from etl.file_processor import AbstrctFileProcessor
+from pipeline.file_processor import AbstrctFileProcessor
+
 
 class TXTProcessor(AbstrctFileProcessor):
     """

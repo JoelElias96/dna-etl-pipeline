@@ -1,0 +1,307 @@
+{
+    "metadata": {
+        "start_at": "2025-01-16T10:22:47.738853",
+        "end_at": "2025-01-16T10:22:48.383436",
+        "context_path": "./data/participants/c5c464e7-8f25-4043-a83e-e4c7d5853f9d",
+        "results_path": "./data/participants/c5c464e7-8f25-4043-a83e-e4c7d5853f9d/out"
+    },
+    "results": [
+        {
+            "participant": {
+                "_id": "c5c464e7-8f25-4043-a83e-e4c7d5853f9d"
+            },
+            "json": {
+                "test_metadata": {
+                    "test_id": "GEN123789",
+                    "test_type": "DNA Analysis",
+                    "date_requested": "2024-03-01",
+                    "date_completed": "2024-03-10",
+                    "status": "Completed",
+                    "laboratory_info": {
+                        "name": "Genetics Labs Co.",
+                        "certification": "CLIA Certified"
+                    }
+                },
+                "sample_metadata": {
+                    "sample_id": "SAMP567890",
+                    "sample_type": "Saliva",
+                    "collection_date": "2024-03-01",
+                    "data_file": "./data/participants/c5c464e7-8f25-4043-a83e-e4c7d5853f9d"
+                },
+                "analysis_metadata": {
+                    "platform": "BGI DNBSEQ-T7",
+                    "methodology": "Whole Genome Sequencing",
+                    "coverage": "40x",
+                    "reference_genome": "GRCh38",
+                    "variants_detected": {
+                        "total": 4200,
+                        "pathogenic": 25,
+                        "likely_pathogenic": 15,
+                        "benign": 4160
+                    }
+                },
+                "individual_metadata": {
+                    "date_of_birth": "1978-11-30",
+                    "gender": "Female",
+                    "ethnicity": "Caucasian",
+                    "family_history": {
+                        "diseases": [
+                            {
+                                "name": "Alzheimer's Disease",
+                                "relation": "Mother",
+                                "age_at_diagnosis": 72
+                            },
+                            {
+                                "name": "Prostate Cancer",
+                                "relation": "Father",
+                                "age_at_diagnosis": 68
+                            }
+                        ]
+                    }
+                },
+                "treatment_metadata": {
+                    "treatment_plan": "Chronic disease management, lifestyle adjustments",
+                    "treatment_start_date": "2024-02-15",
+                    "expected_duration": "Ongoing treatment with regular check-ups",
+                    "current_medications": [
+                        {
+                            "name": "Amlodipine",
+                            "dose": "5 mg daily",
+                            "purpose": "Blood pressure control"
+                        },
+                        {
+                            "name": "Simvastatin",
+                            "dose": "20 mg daily",
+                            "purpose": "Cholesterol management"
+                        }
+                    ],
+                    "doctor": "Dr. Emily Watson, Cardiologist"
+                },
+                "environmental_factors": {
+                    "smoking_history": "Never smoked",
+                    "alcohol_consumption": "Occasional social drinker",
+                    "exercise_regimen": "Jogging 3 times a week, 30 minutes each session",
+                    "diet": "Low sodium, high fiber, balanced diet",
+                    "sleep_patterns": "7 hours of sleep each night, no disturbances"
+                },
+                "biomarker_data": {
+                    "blood_pressure": "115/75 mmHg",
+                    "cholesterol_levels": {
+                        "total_cholesterol": "180 mg/dL",
+                        "LDL": "100 mg/dL",
+                        "HDL": "60 mg/dL",
+                        "triglycerides": "120 mg/dL"
+                    },
+                    "blood_sugar": "Fasting glucose: 88 mg/dL, HbA1c: 5.4%",
+                    "kidney_function": {
+                        "creatinine": "0.8 mg/dL",
+                        "eGFR": "95 mL/min/1.73m\u00b2"
+                    },
+                    "oxygen_saturation": "97% at rest"
+                },
+                "family_health_history": {
+                    "paternal_history": {
+                        "heart_disease": "Father diagnosed at 65, underwent bypass surgery",
+                        "prostate_cancer": "Father diagnosed at 68, treated with radiation"
+                    },
+                    "maternal_history": {
+                        "alzheimers": "Mother diagnosed at 72, in advanced stages",
+                        "high_blood_pressure": "Mother diagnosed at 55, on medication"
+                    },
+                    "siblings_health": {
+                        "brother": "No chronic health conditions, healthy lifestyle",
+                        "sister": "No chronic health conditions, maintains healthy weight"
+                    }
+                },
+                "genomic_risk_factors": {
+                    "BRCA1_variant": "No pathogenic variants detected",
+                    "APOE_genotype": "APOE \u03b53/\u03b53 genotype, average risk for Alzheimer's",
+                    "MTHFR_mutation": "No significant mutations found",
+                    "FTO_gene": "FTO gene variant present, maintains a healthy weight",
+                    "TP53_mutation": "No mutations detected"
+                },
+                "mental_health_metadata": {
+                    "diagnosis": "No psychiatric disorders diagnosed",
+                    "medications": "None prescribed",
+                    "therapy": "Not undergoing therapy, normal mental health"
+                },
+                "vaccine_metadata": {
+                    "flu_vaccine": "Received annually, last dose in 2023",
+                    "COVID_vaccine": "Completed full vaccination, including boosters",
+                    "tetanus_vaccine": "Last dose in 2022, next dose due in 2027"
+                },
+                "social_support_metadata": {
+                    "caregiver": "Spouse, primary caretaker",
+                    "community_involvement": "Active participant in neighborhood book club",
+                    "social_interactions": "Regular contact with extended family and friends"
+                },
+                "activity_level_metadata": {
+                    "daily_activity": "Walks for 30 minutes daily, light stretching",
+                    "weekly_exercise": "Yoga classes twice a week, light intensity",
+                    "exercise_intensity": "Low to moderate intensity due to age-related concerns"
+                },
+                "dietary_supplement_metadata": {
+                    "supplements": [
+                        {
+                            "name": "Vitamin C",
+                            "dose": "500 mg daily",
+                            "purpose": "Immune support"
+                        },
+                        {
+                            "name": "Calcium",
+                            "dose": "1000 mg daily",
+                            "purpose": "Bone health maintenance"
+                        }
+                    ],
+                    "nutritionist": "Consulted with nutritionist for customized diet plan"
+                }
+            },
+            "txt": {
+                "sequences": [
+                    {
+                        "gc_content": 57.08,
+                        "codons": {
+                            "ATG": 1,
+                            "CGT": 4,
+                            "ACG": 3,
+                            "TGA": 4,
+                            "GCT": 3,
+                            "AGC": 7,
+                            "GTA": 2,
+                            "TAG": 4,
+                            "CGA": 1,
+                            "TCG": 3,
+                            "GTC": 1,
+                            "GAG": 5,
+                            "TTC": 1,
+                            "AGG": 6,
+                            "CAG": 3,
+                            "TCC": 1,
+                            "TGC": 2,
+                            "GCA": 2,
+                            "GTG": 4,
+                            "AGT": 5,
+                            "GCG": 1,
+                            "TAC": 3,
+                            "GAT": 1,
+                            "GAC": 3,
+                            "AGA": 1,
+                            "ACT": 1,
+                            "GGT": 1,
+                            "GGA": 1,
+                            "CTG": 1
+                        }
+                    },
+                    {
+                        "gc_content": 64.17,
+                        "codons": {
+                            "GCT": 10,
+                            "AGG": 101,
+                            "AGT": 63,
+                            "ACG": 18,
+                            "TAG": 38,
+                            "GTC": 3,
+                            "AGC": 25,
+                            "GTA": 61,
+                            "CGT": 20,
+                            "GCG": 14,
+                            "TAC": 6,
+                            "GAC": 10,
+                            "TGA": 10,
+                            "AGA": 20,
+                            "GGA": 54,
+                            "GCA": 10,
+                            "CGA": 11,
+                            "CTG": 4,
+                            "GAT": 4,
+                            "GAG": 81,
+                            "TCA": 3,
+                            "CTA": 7,
+                            "CAG": 14,
+                            "TGG": 4,
+                            "GTT": 3,
+                            "ACT": 6,
+                            "TCG": 4,
+                            "GAA": 7,
+                            "CGG": 5,
+                            "ACA": 3,
+                            "ATC": 2,
+                            "CTC": 1,
+                            "GGT": 10,
+                            "GTG": 14,
+                            "TTC": 1,
+                            "TGC": 6,
+                            "CGC": 1,
+                            "ATA": 1,
+                            "CCT": 1,
+                            "CTT": 2,
+                            "GGG": 160,
+                            "AAG": 3,
+                            "GGC": 2,
+                            "ATG": 3,
+                            "CCA": 1
+                        }
+                    },
+                    {
+                        "gc_content": 63.54,
+                        "codons": {
+                            "GCT": 6,
+                            "AGG": 98,
+                            "AGT": 58,
+                            "ACG": 14,
+                            "TAG": 38,
+                            "GTC": 2,
+                            "AGC": 21,
+                            "GTA": 55,
+                            "CGT": 18,
+                            "GCG": 12,
+                            "TAC": 4,
+                            "GAC": 9,
+                            "TGA": 7,
+                            "AGA": 20,
+                            "GGA": 50,
+                            "GCA": 7,
+                            "CGA": 8,
+                            "CTG": 2,
+                            "GAT": 3,
+                            "GAG": 77,
+                            "TCA": 2,
+                            "CTA": 5,
+                            "CAG": 12,
+                            "TGG": 3,
+                            "GTT": 1,
+                            "ACT": 4,
+                            "TCG": 3,
+                            "GAA": 6,
+                            "CGG": 3,
+                            "ACA": 3,
+                            "ATC": 2,
+                            "CTC": 1,
+                            "GGT": 8,
+                            "GTG": 13,
+                            "TTC": 1,
+                            "TGC": 4,
+                            "CGC": 1,
+                            "ATA": 1,
+                            "CCT": 1,
+                            "CTT": 2,
+                            "GGG": 132,
+                            "AAG": 3,
+                            "GGC": 2,
+                            "ATG": 2
+                        }
+                    }
+                ],
+                "most_common_codon": "GGG",
+                "lcs": {
+                    "value": "GCTAGGAGTACGTAGGTCAGTAGCGTACGTAGCGCGTACGACTGAGCTAGAGGACGTAGTGCAGTACGACTGCGTAGTACGCGTGACTGAGCTGATCGAGCTGTCGAGTCACTAGCGTAGCGAGATCAGGAGCGTAGCGAGCAGTGGCGTAGGAGCAGTACGAGAGTTACTGCGTAGCGTGCAGAGACTGCGTAGGACTCGAGCTAGCGTACGGAAGCGTACAGCTAGCGTACGAGCTGACGGTACAGCTAGTCGCGTAGTGCGTAGACATCGGAGCTACGAGCGATCAGGAGTGCTGCGTAGAGTGAGTGACTCGAGGAGACGCTAGGAGTAGTAGGTACGAGTAGAGGAGTGCTGGCGTAGGACAGGATCGGAGTACAGGAGGTAGCAGTGAGGAGTCAGTAGGCAGTGTAGCGTGAAGCAGTGACTAGCGTAGAGGACGAGTAGTTCAGGTAGGAGCAGTCAGGAGACGTGCGTGAAGTACGAGTAGGTCAGTGCAGAGTACGCTGCGAGCGACTAAGGAGTCAGTAGCGTAGGATACGTAGGAGGAGGTGACCTAGAGGACTTAGGAGGTGCGTAGGGAGTGAAGTAGTACGGAAGCGGACAGCGTAGGATGAGCTTAGCGTAGGCAGAGGGAAGTGGAAGAGTACGAGTAGGAGCTAGCTAGGAGCAGTAGAGTAGGAGTAGGAGCGTGAGAGGATGGAGGAGATGAGCTGAGACAGGAGTACGGAAGCTAGGACGTAGTGCGTGCAGTAGACTGGCGTAGGAGGTAGGAGGGAGAGTAGCGTAGAGTAGGAGGAGGAGTAGGAGGACTGAGAGTAGGAGGTAGGAGTGGAGAGGAGTACGAGGAGAGAGAGTAGGAGGAGGAGCGTAGGGAGGAGTAGTAGCGTAGTAGGAGTGCAGTAGGTAGTACGAGAGGAGGAGGAGCGTAGTACGAGGAGTAGTAGGAGGTAGGAGGAGAGGAGTAGCGGAGGAGTAGTACGAGGTAGGAGTAGTAGGAGGAGTAGGAGTAGTAGCGTAGTAGAGGTAGTAGGGAGTAGGAGTACAGTAGGAGTAGTAGGAGGTAGTAGGAGGTAGGAGAGTGAGGAGAGTAGTGCAGTAGGAGTAGGAGTGCAGTAGTAGGAGTGGAGTAGTAGCGTACGTAGGGAGTAGGAGGTGAGTAGGAGAGTGTAGGAGAGTACGAGTAGGAGGTAGCGTAGCGAGAGAGTAGCGTAGAGTAGTAGGAGTAGGAGTAGTACGGAAGCGGACAGCGTAGGAGTAGGAGTAGGTAGTAGAGTACAGGAGGTAGGGAGGAGAGTGAGGTAGAGGAGTAGGAGGAGTAGGAGTAGGAGGTAGGAGGTAGTAGTGCAGTAGTACAGTGGGAGGAGGAGGAGGTAGTAGGAGAGGAGGAGGAGGAGTAGGAGTAGGAGAGTAGTAGTAGGAGTAGGAGGTAGGAGGAGGAGTAGGAGTAGTAGGAGTAGGAGTAGCGGAGTAGGAGGAGTAGGAGTAGTAGGAGTAGTAGGGAGGAGGAGGAGGAGGAGGAGGAGTAGAGGTAGGAGGAGGGAGGAGGAGGGAGTAGTAGAGGAGGAGGAGGAGGAGGAGGAGAGGAGGAGGGGAGGAGGAGGAGGGAGAGGAGGAGGGAGGAGGAGGAGGAGGAGGAGGAGAGGAGGAGGAGGAGGGAGGAGGGGAGGGAGGGGAGGGAGGAGGGGAGGAGGGAGAGAGGAGAGAGGGAGAGGAGAGGGGAGGGAGGGGAGGGAGGAGGGGAGGAGGGAGAGAGGAGAGGGAGAGGAGAGGGGAGAGAGGGAGAGGAGAGGGGAGGGAGGGGGGGGAGGAGGGGGAGAGGGGGAGGGGGAGGGGGAGGGGGGAGGAGGGGGGGAGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",
+                    "sequences": [
+                        2,
+                        3
+                    ],
+                    "length": 2172
+                }
+            }
+        }
+    ]
+}

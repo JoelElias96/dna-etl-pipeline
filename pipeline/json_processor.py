@@ -1,6 +1,8 @@
 import json
 from datetime import datetime
-from etl.file_processor import AbstrctFileProcessor
+from pipeline.file_processor import AbstrctFileProcessor
+import os
+
 
 class JSONProcessor(AbstrctFileProcessor):
     
@@ -143,7 +145,7 @@ class JSONProcessor(AbstrctFileProcessor):
             if isinstance(current, dict):
                 for value in current.values():
                     # If the value is a string, validate its length
-                    if isinstance(value, str):
+                    if isinstance(value, str) and not os.path.exists(value):
                         _validate_length_of_str(value)
                     else:
                         stack.append(value)

@@ -1,5 +1,5 @@
-from .json_processor import JSONProcessor
-from .txt_processor import TXTProcessor
+from pipeline.json_processor import JSONProcessor
+from pipeline.txt_processor import TXTProcessor
 
 class ProcessorFactory:
     @staticmethod

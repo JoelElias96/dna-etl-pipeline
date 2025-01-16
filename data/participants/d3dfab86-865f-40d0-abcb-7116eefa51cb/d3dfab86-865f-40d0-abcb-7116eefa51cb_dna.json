@@ -1,0 +1,77 @@
+{
+    "test_metadata": {
+        "test_id": "GEN345",
+        "test_type": "DNA Test",
+        "date_requested": "2024-01-10",
+        "date_completed": "2024-01-12",
+        "status": "Completed",
+        "laboratory_info": {
+            "name": "Gene Labs",
+            "certification": "CLIA"
+        }
+    },
+    "sample_metadata": {
+        "sample_id": "SAMP123",
+        "sample_type": "Saliva",
+        "collection_date": "2024-01-10",
+        "data_file": "./data/participants/d3dfab86-865f-40d0-abcb-7116eefa51cb"
+    },
+    "analysis_metadata": {
+        "platform": "Illumina NovaSeq",
+        "methodology": "Sequencing",
+        "coverage": "30x",
+        "reference_genome": "GRCh38",
+        "variants_detected": {
+            "total": 1500,
+            "pathogenic": 5,
+            "likely_pathogenic": 2,
+            "benign": 1493
+        }
+    },
+    "individual_metadata": {
+        "_individual_id": "IND456",
+        "_name": "John Doe",
+        "date_of_birth": "1980-07-15",
+        "gender": "Male",
+        "ethnicity": "Caucasian"
+    },
+    "treatment_metadata": {
+        "treatment_plan": "Manage diabetes with medication",
+        "start_date": "2024-01-01",
+        "current_medications": [
+            {
+                "name": "Metformin",
+                "dose": "500 mg daily"
+            }
+        ],
+        "doctor": "Dr. Green"
+    },
+    "environmental_factors": {
+        "smoking_history": "Non-smoker",
+        "exercise": "Walks daily",
+        "diet": "Balanced diet",
+        "sleep": "7 hours nightly"
+    },
+    "biomarker_data": {
+        "blood_pressure": "120/80 mmHg",
+        "cholesterol": "190 mg/dL",
+        "blood_sugar": "95 mg/dL",
+        "eGFR": "90 mL/min/1.73m\u00b2"
+    },
+    "family_health_history": {
+        "paternal_history": {
+            "heart_disease": "Father diagnosed at 55"
+        },
+        "maternal_history": {
+            "cancer": "Mother diagnosed at 60"
+        }
+    },
+    "genomic_risk_factors": {
+        "BRCA1_variant": "Not detected",
+        "APOE_genotype": "APOE \u03b53/\u03b53"
+    },
+    "vaccine_metadata": {
+        "flu_vaccine": "Yes, 2023",
+        "COVID_vaccine": "Yes, fully vaccinated"
+    }
+}

@@ -13,7 +13,8 @@
     "sample_metadata": {
         "sample_id": "SAMP987654",
         "sample_type": "Saliva",
-        "collection_date": "2024-12-01"
+        "collection_date": "2024-12-01",
+        "data_file": "./data/participants/f3324a99-8a63-4ada-9d1d-562f84c7636d"
     },
     "analysis_metadata": {
         "platform": "Illumina NovaSeq 6000",

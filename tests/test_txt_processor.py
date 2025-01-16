@@ -1,6 +1,7 @@
 import pytest
 from etl.txt_processor import TXTProcessor
 
+
 class TestGCContent:
     
     def test_gc_content_case1(self):
@@ -57,7 +58,8 @@ class TestGCContent:
         processor = TXTProcessor("dummy_path")
         with pytest.raises(ValueError, match="The sequence cannot be empty."):
             processor._gc_content("")
-    
+
+
 class TestCodonFrequency:
     def test_codon_frequency_case1(self):
         processor = TXTProcessor("dummy_path")
@@ -167,6 +169,7 @@ class TestCodonFrequency:
         with pytest.raises(ValueError, match="The sequence cannot be empty."):
             processor._codon_frequency("")
 
+
 class TestMostFrequentCodon:
    
         def test_simple_case(self):
@@ -227,6 +230,7 @@ class TestMostFrequentCodon:
             ]
             expected_most_common = "CGA"  # Most frequent in the combined dictionaries
             assert processor._most_frequent_codon(codon_frequencies) == expected_most_common, "Failed on large number of frequencies"
+
 
 class TestLongestCommonSubsequence:
     def test_simple_case_with_one_continuous_subsequence(self):
@@ -312,6 +316,7 @@ class TestLongestCommonSubsequence:
         seq2 = "A" * 10000 + "TGC"
         expected_lcs = "A" * 10000
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on two large sequences"
+
 
 class TestProcessDNATxtFile:
     

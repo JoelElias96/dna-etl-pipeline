@@ -1,0 +1,51 @@
+{
+    "study_info": {
+        "study_id": "STUDY987321",
+        "study_name": "Cardiovascular Health Analysis",
+        "date_started": "2023-07-01",
+        "date_completed": "2023-07-10",
+        "status": "Completed",
+        "institution": {
+            "name": "HeartGen Research",
+            "accreditation": "ISO 17025 Accredited"
+        }
+    },
+    "participant_info": {
+        "_participant_id": "PART5678901234567890",
+        "sample_type": "Urine",
+        "sampling_date": "2023-07-01",
+        "file_location": "./data/participants/f4aff7f6-3649-4b89-806d-a0814a9f2c37"
+    },
+    "genetic_assessment": {
+        "sequencer_model": "Thermo Fisher Ion Proton",
+        "analysis_type": "Targeted Gene Sequencing",
+        "coverage_depth": "40x",
+        "reference_build": "GRCh38",
+        "detected_variants": {
+            "total_variants": 4000,
+            "harmful": 10,
+            "uncertain_significance": 5,
+            "non_harmful": 3985
+        }
+    },
+    "participant_details": {
+        "_participant_name": "Alice Green-Jones",
+        "date_of_birth": "1981-11-23",
+        "sex": "Female",
+        "race": "African American",
+        "medical_history": {
+            "conditions": [
+                {
+                    "condition": "Heart Disease",
+                    "relation": "Father",
+                    "age_at_diagnosis": 60
+                },
+                {
+                    "condition": "Stroke",
+                    "relation": "Mother",
+                    "age_at_diagnosis": 62
+                }
+            ]
+        }
+    }
+}

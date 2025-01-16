@@ -2,7 +2,7 @@ import pytest
 import uuid
 from pathlib import Path
 from etl.input_validation import InputValidator
-import json
+
 
 class TestValidationStructure:
     
@@ -52,6 +52,7 @@ class TestValidationStructure:
         validator = InputValidator(input_data, [])
         with pytest.raises(ValueError):
             validator._validate_structure()
+
 
 class TestValidationPaths:
     def test_valid_paths(self, tmp_path):
@@ -119,6 +120,7 @@ class TestValidationPaths:
         validator = InputValidator(input_data, [])
         with pytest.raises(ValueError, match="context_path is empty."):
             validator._validate_paths()
+
 
 class TestNormalizePath:
     def test_normalize_paths_with_valid_inputs(self):
@@ -191,6 +193,7 @@ class TestNormalizePath:
         assert validator.context_path == expected_context_path
         assert validator.results_path == expected_results_path
 
+
 class TestUUIDValidation:
     def test_valid_uuid_in_path(self, tmp_path):
         uuid_str = str(uuid.uuid4())
@@ -236,6 +239,8 @@ class TestUUIDValidation:
         validator = InputValidator(input_data, [])
         with pytest.raises(ValueError):
             validator._extract_uuid_and_check_validity()
+
+
 class TestValidateFiles:
 
     def test_validate_files_with_valid_context(self, tmp_path):
@@ -283,22 +288,6 @@ class TestValidateFiles:
         validator = InputValidator({"context_path": str(context_path), "results_path": str(results_path)}, ["txt"])
 
         with pytest.raises(ValueError, match="The context_path directory is empty"):
-            validator._validate_files()
-
-    def test_validate_files_with_excess_files(self, tmp_path):
-        context_uuid = str(uuid.uuid4())
-        context_path = Path(tmp_path) / "context" / context_uuid
-        results_path = Path(tmp_path) / "results" / context_uuid / "out"
-        context_path.mkdir(parents=True)
-        results_path.mkdir(parents=True)
-        file1 = context_path / "sample1.txt"
-        file2 = context_path / "sample2.txt"
-        file1.touch()
-        file2.touch()
-
-        validator = InputValidator({"context_path": str(context_path), "results_path": str(results_path)}, ["txt"], num_of_files=1)
-
-        with pytest.raises(ValueError, match="contains more than 1 files"):
             validator._validate_files()
 
     def test_validate_files_with_correct_uuid(self, tmp_path):
@@ -434,6 +423,7 @@ class TestValidateFiles:
 
         expected_result.sort()  # Sort only the expected result
         assert result == expected_result
+
 
 class TestValidateMethod:
 

@@ -1,0 +1,177 @@
+{
+    "metadata": {
+        "start_at": "2025-01-16T11:04:10.678319",
+        "end_at": "2025-01-16T11:04:10.692806",
+        "context_path": "./data/participants/12ba71a0-30f4-464e-ba1b-9a31ea7d35fc",
+        "results_path": "./data/participants/12ba71a0-30f4-464e-ba1b-9a31ea7d35fc/out"
+    },
+    "results": [
+        {
+            "participant": {
+                "_id": "12ba71a0-30f4-464e-ba1b-9a31ea7d35fc"
+            },
+            "json": {
+                "test_metadata": {
+                    "test_id": "DNA987654",
+                    "test_type": "Genetic Profiling",
+                    "date_requested": "2024-05-10",
+                    "date_completed": "2024-05-20",
+                    "status": "Completed",
+                    "laboratory_info": {
+                        "name": "BioGene Lab Co.",
+                        "certification": "CLIA Certified"
+                    }
+                },
+                "sample_metadata": {
+                    "sample_id": "SAMP123456",
+                    "sample_type": "Blood",
+                    "collection_date": "2024-05-10",
+                    "data_file": "./data/participants/12ba71a0-30f4-464e-ba1b-9a31ea7d35fc"
+                },
+                "analysis_metadata": {
+                    "platform": "Illumina HiSeq 4000",
+                    "methodology": "Exome Sequencing",
+                    "coverage": "50x",
+                    "reference_genome": "GRCh37",
+                    "variants_detected": {
+                        "total": 4500,
+                        "pathogenic": 20,
+                        "likely_pathogenic": 10,
+                        "benign": 4470
+                    }
+                },
+                "individual_metadata": {
+                    "date_of_birth": "1982-03-18",
+                    "gender": "Female",
+                    "ethnicity": "Hispanic",
+                    "family_history": {
+                        "diseases": [
+                            {
+                                "name": "Ovarian Cancer",
+                                "relation": "Mother",
+                                "age_at_diagnosis": 45
+                            },
+                            {
+                                "name": "Hypertension",
+                                "relation": "Father",
+                                "age_at_diagnosis": 50
+                            }
+                        ]
+                    }
+                }
+            },
+            "txt": {
+                "sequences": [
+                    {
+                        "gc_content": 57.08,
+                        "codons": {
+                            "ATG": 1,
+                            "CGT": 4,
+                            "ACG": 3,
+                            "TGA": 4,
+                            "GCT": 3,
+                            "AGC": 7,
+                            "GTA": 2,
+                            "TAG": 4,
+                            "CGA": 1,
+                            "TCG": 3,
+                            "GTC": 1,
+                            "GAG": 5,
+                            "TTC": 1,
+                            "AGG": 6,
+                            "CAG": 3,
+                            "TCC": 1,
+                            "TGC": 2,
+                            "GCA": 2,
+                            "GTG": 4,
+                            "AGT": 5,
+                            "GCG": 1,
+                            "TAC": 3,
+                            "GAT": 1,
+                            "GAC": 3,
+                            "AGA": 1,
+                            "ACT": 1,
+                            "GGT": 1,
+                            "GGA": 1,
+                            "CTG": 1
+                        }
+                    },
+                    {
+                        "gc_content": 57.21,
+                        "codons": {
+                            "GCT": 4,
+                            "AGG": 2,
+                            "AGT": 5,
+                            "ACG": 4,
+                            "TAG": 5,
+                            "GTC": 2,
+                            "AGC": 5,
+                            "GTA": 2,
+                            "CGT": 8,
+                            "GCG": 5,
+                            "TAC": 2,
+                            "GAC": 3,
+                            "TGA": 2,
+                            "AGA": 2,
+                            "GGA": 1,
+                            "GCA": 2,
+                            "CGA": 3,
+                            "CTG": 1,
+                            "GAT": 2,
+                            "GAG": 4,
+                            "TCA": 1,
+                            "CTA": 1,
+                            "CAG": 2,
+                            "TGG": 1,
+                            "GTT": 1,
+                            "ACT": 2,
+                            "TCG": 1,
+                            "GAA": 1
+                        }
+                    },
+                    {
+                        "gc_content": 56.8,
+                        "codons": {
+                            "AGC": 3,
+                            "TAG": 5,
+                            "CGT": 2,
+                            "ACG": 3,
+                            "TGA": 2,
+                            "CGG": 1,
+                            "TAC": 1,
+                            "TCG": 2,
+                            "AGT": 4,
+                            "GCG": 4,
+                            "ACA": 1,
+                            "GAG": 5,
+                            "CTA": 2,
+                            "CGA": 1,
+                            "ATC": 2,
+                            "AGG": 2,
+                            "GCT": 1,
+                            "CTC": 1,
+                            "GGA": 3,
+                            "GTA": 4,
+                            "GGT": 1,
+                            "AGA": 1,
+                            "GTG": 1,
+                            "CTG": 1,
+                            "GAC": 1,
+                            "CAG": 1,
+                            "GCA": 1
+                        }
+                    }
+                ],
+                "most_common_codon": "AGC",
+                "lcs": {
+                    "value": "GAGCTAGCGTACG",
+                    "sequences": [
+                        1,
+                        2
+                    ],
+                    "length": 13
+                }
+            }
+        }
+    ]
+}

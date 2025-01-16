@@ -15,7 +15,7 @@ class Transform:
         input_data (dict): A dictionary containing the context path and other necessary data for processing files.
 
     Methods:
-        transform_data() -> List:
+        transform_data() -> Dict:
             Transforms the data from the provided files using the appropriate processor based on file extensions.
 
         _get_processor(file: str) -> Tuple[FileProcessorFactory, str]:
@@ -36,17 +36,17 @@ class Transform:
         self.input_data = input_data
         self.processed_results = {}
 
-    def transform_data(self):
+    def transform_data(self) -> Dict:
         """
         Transforms the data from the provided files using the appropriate processor based on their extensions.
 
         This method iterates over the list of files, determines the processor based on the file extension,
         processes each file, and stores the result in `processed_results`.
 
-        :return: A list containing the transformed data for each file.
-        :rtype: List
+        :return: A Dict containing the transformed data for each file with the file extensions as the key.
+        :rtype: Dict
         """
-        transformed_data = []
+        transformed_data = {}
 
         for file in self.files:
             # Instantiate the processor with the file path

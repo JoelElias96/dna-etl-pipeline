@@ -1,7 +1,9 @@
 import os
 import json
 from datetime import datetime
-from pipeline.file_processor_factory import FileProcessorFactory
+from pipeline.extract import Extract
+from pipeline.transform import Transform
+from pipeline.load import Load
 from utils.input_validation import InputValidator
 from typing import List, Dict
 

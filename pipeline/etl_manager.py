@@ -1,6 +1,6 @@
 from datetime import datetime
 from pipeline.extract import Extractor
-from pipeline.transform import Transform
+from pipeline.transform import Transformer
 from pipeline.load import Loader
 from utils.input_validation import InputValidator
 from typing import List, Dict
@@ -71,8 +71,8 @@ class ETLManager:
             files_list, self.participant_id = self.extractor.extract()
 
             # Step 3: Transform the data
-            self.transformer = Transform(files_list, self.input_data)
-            processed_results = self.transformer.transformer()
+            self.transformer = Transformer(files_list, self.input_data)
+            processed_results = self.transformer.transform()
 
             # Catch the end time after processing
             end_time = datetime.utcnow().isoformat()
@@ -122,7 +122,8 @@ class ETLManager:
             "results": [
                 {
                     "participant": {"_id": self.participant_id},
-                    **processed_results,
+                    "txt": processed_results["txt"],
+                    "json": processed_results["json"],
                 }
             ],
         }

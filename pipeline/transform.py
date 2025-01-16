@@ -3,7 +3,7 @@ import os
 from typing import List, Dict, Tuple
 
 
-class Transform:
+class Transformer:
     """
     A class responsible for transforming data from a list of files based on their extensions.
 
@@ -34,9 +34,8 @@ class Transform:
         """
         self.files = files
         self.input_data = input_data
-        self.processed_results = {}
 
-    def transformer(self) -> Dict:
+    def transform(self) -> Dict:
         """
         Transforms the data from the provided files using the appropriate processor based on their extensions.
 
@@ -53,7 +52,7 @@ class Transform:
             processor, file_extension = self._get_processor(file)
 
             # Process the file and store the result
-            self.processed_results[file_extension] = processor.process()
+            transformed_data[file_extension] = processor.process()
 
         return transformed_data
 

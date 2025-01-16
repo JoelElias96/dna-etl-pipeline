@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class AbstrctFileProcessor(ABC):
+class AbstractFileProcessor(ABC):
     """
     Abstract Base Class for file processors.
     Defines the interface that all file processors must implement.

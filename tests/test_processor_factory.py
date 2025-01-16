@@ -6,11 +6,11 @@ class TestProcessorFactory:
 
     def test_create_processor_json(self):
         processor = FileProcessorFactory.create_processor('data.json', 'json')
-        assert processor.__class__.__name__ == 'JSONProcessor'
+        assert processor.__class__.__name__ == 'TestMetadataJsonProcessor'
     
     def test_create_processor_txt(self):
         processor = FileProcessorFactory.create_processor('data.txt', 'txt')
-        assert processor.__class__.__name__ == 'TXTProcessor'
+        assert processor.__class__.__name__ == 'DNASequenceTxtProcessor'
     
     def test_create_processor_invalid(self):
         with pytest.raises(ValueError):

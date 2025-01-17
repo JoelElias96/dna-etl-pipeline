@@ -1,23 +1,10 @@
 import tkinter as tk
 from tkinter import filedialog
-import json
 from tkinter import messagebox
 
 
-def process_json_file(json_path):
-    """Load and process the JSON file."""
-    try:
-        with open(json_path, 'r') as file:
-            data = json.load(file)  # Load the JSON data
-            print("JSON data loaded successfully!")
-            # Here you can process the JSON data as needed
-            print(data)
-    except FileNotFoundError:
-        messagebox.showerror("ERROR", f"File not found: {json_path}")
-    except json.JSONDecodeError:
-        messagebox.showerror("ERROR", "Invalid JSON format.")
-    except Exception as e:
-        messagebox.showerror("ERROR", f"An error occurred: {e}")
+def process_json_file(file_path):
+    pass
 
 
 def select_json_file():
@@ -65,7 +52,6 @@ def main():
     else:
         # Terminal input method
         json_file = input("Please enter the full path of the JSON file: ")
-        process_json_file(json_file)
 
 
 if __name__ == "__main__":

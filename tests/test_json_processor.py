@@ -186,7 +186,7 @@ class TestValidateLengthsOfStrings:
         except ValueError as e:
             assert str(e) == (
                             "The string 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                            "exceeds 64 characters.", "Test case 2 failed!")
+                            " exceeds 64 characters.")
 
     def test_string_exceeding_64_characters_nested_dictionary(self, tmp_path: Path):
         processor = TestMetadataJsonProcessor(str(tmp_path / "dummy.json"))
@@ -201,7 +201,7 @@ class TestValidateLengthsOfStrings:
         except ValueError as e:
             assert str(e) == (
                             "The string 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB'"
-                            "exceeds 64 characters.", "Test case 3 failed!")
+                            " exceeds 64 characters.")
 
     def test_string_exceeding_64_characters_list(self, tmp_path: Path):
         processor = TestMetadataJsonProcessor(str(tmp_path / "dummy.json"))
@@ -211,7 +211,7 @@ class TestValidateLengthsOfStrings:
             assert False, "Test case 4 failed!"
         except ValueError as e:
             assert str(e) == ("The string 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC'"
-                              " exceeds 64 characters.", "Test case 4 failed!")
+                              " exceeds 64 characters.")
 
     def test_mixed_valid_invalid_strings_nested_structure(self, tmp_path: Path):
         processor = TestMetadataJsonProcessor(str(tmp_path / "dummy.json"))
@@ -226,7 +226,7 @@ class TestValidateLengthsOfStrings:
             assert False, "Test case 5 failed!"
         except ValueError as e:
             assert str(e) == ("The string 'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD'"
-                              " exceeds 64 characters.", "Test case 5 failed!")
+                              " exceeds 64 characters.")
 
     def test_empty_dictionary(self, tmp_path: Path):
         processor = TestMetadataJsonProcessor(str(tmp_path / "dummy.json"))

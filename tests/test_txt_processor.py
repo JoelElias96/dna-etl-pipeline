@@ -3,66 +3,67 @@ from pipeline.processors.dna_sequence_txt_processor import DNASequenceTxtProcess
 
 
 class TestGCContent:
-    
+
     def test_gc_content_case1(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("ATCGATCGTAGCTAGCTAGCTGATCGATCGAT") == pytest.approx(46.88, 0.01), "Failed on ATCGATCGTAGCTAGCTAGCTGATCGATCGAT"
 
     def test_gc_content_case2(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("ATCGGTAAATGCCTGAAAGATG") == pytest.approx(40.91, 0.01), "Failed on ATCGGTAAATGCCTGAAAGATG"
 
     def test_gc_content_case3(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("CGTACGTAGCTA") == pytest.approx(50.0, 0.01), "Failed on CGTACGTAGCTA"
 
     def test_gc_content_case4(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("ATATATATATAT") == pytest.approx(0.0, 0.01), "Failed on ATATATATATAT"
 
     def test_gc_content_case5(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("GCGCGCGCGCGC") == pytest.approx(100.0, 0.01), "Failed on GCGCGCGCGCGC"
 
     def test_gc_content_case6(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("ATGCATGCATGC") == pytest.approx(50.0, 0.01), "Failed on ATGCATGCATGC"
 
     def test_gc_content_case7(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("TTTT") == pytest.approx(0.0, 0.01), "Failed on TTTT"
 
     def test_gc_content_case8(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("GGGG") == pytest.approx(100.0, 0.01), "Failed on GGGG"
 
     def test_gc_content_case9(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("AAAA") == pytest.approx(0.0, 0.01), "Failed on AAAA"
 
     def test_gc_content_case10(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         assert processor._gc_content("CCCC") == pytest.approx(100.0, 0.01), "Failed on CCCC"
 
     def test_gc_content_long_sequence(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         long_sequence = "A" * 1000000 + "C" * 1000000 + "G" * 1000000 + "T" * 1000000
         assert processor._gc_content(long_sequence) == pytest.approx(50.0, 0.01), "Failed on long_sequence (1M of each nucleotide)"
 
     def test_gc_content_another_long_sequence(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         long_sequence = "A" * 3333 + "TGC\n"
         assert processor._gc_content(long_sequence) == pytest.approx(0.06, 0.01), "Failed on long_sequence (1M of each nucleotide)"
 
     def test_gc_content_empty_sequence(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         with pytest.raises(ValueError, match="The sequence cannot be empty."):
             processor._gc_content("")
 
 
 class TestCodonFrequency:
+
     def test_codon_frequency_case1(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "ATGCGATACGCTT"
         expected_frequency = {
             "ATG": 1,
@@ -73,7 +74,7 @@ class TestCodonFrequency:
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case2(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "ATCGATCG"
         expected_frequency = {
             "ATC": 1,
@@ -82,7 +83,7 @@ class TestCodonFrequency:
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case3(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "CGTACGTAGCTA"
         expected_frequency = {
             "CGT": 1,
@@ -93,7 +94,7 @@ class TestCodonFrequency:
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case4(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "ATATATATATAT"
         expected_frequency = {
             "ATA": 2,
@@ -102,7 +103,7 @@ class TestCodonFrequency:
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case5(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "GCGCGCGCGCGC"
         expected_frequency = {
             "GCG": 2,
@@ -111,7 +112,7 @@ class TestCodonFrequency:
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case6(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "ATGCATGCATGC"
         expected_frequency = {
             "ATG": 1,
@@ -122,39 +123,39 @@ class TestCodonFrequency:
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case7(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "TTTT"
         expected_frequency = {
-            "TTT": 1  
+            "TTT": 1
         }
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case8(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "GGGG"
         expected_frequency = {
-            "GGG": 1 
+            "GGG": 1
         }
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case9(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "AAAA"
         expected_frequency = {
-            "AAA": 1  
+            "AAA": 1
         }
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_case10(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         sequence = "CCCC"
         expected_frequency = {
-            "CCC": 1 
+            "CCC": 1
         }
         assert processor._codon_frequency(sequence) == expected_frequency, f"Failed on {sequence}"
 
     def test_codon_frequency_long_sequence(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         long_sequence = "A" * 333333 + "C" * 333333 + "G" * 333333 + "T" * 333333
         expected_frequency = {
             "AAA": 111111,
@@ -165,157 +166,261 @@ class TestCodonFrequency:
         assert processor._codon_frequency(long_sequence) == expected_frequency, "Failed on long_sequence (1M of each nucleotide)"
 
     def test_codon_frequency_empty_sequence(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         with pytest.raises(ValueError, match="The sequence cannot be empty."):
             processor._codon_frequency("")
 
 
 class TestMostFrequentCodon:
-   
-        def test_simple_case(self):
-            processor = DNASequenceTxtProcessor ("dummy_path")
-            codon_frequencies = [
-                {"ATG": 1, "CGA": 2, "TAC": 1},
-                {"CGA": 3, "TGC": 1},
-                {"CGA": 1, "ATG": 2, "TAC": 2}
-            ]
-            expected_most_common = "CGA"  # Appears 6 times in total
-            assert processor._most_frequent_codon(codon_frequencies) == expected_most_common, "Failed on simple case"
 
-        def test_single_codon_frequency(self):
-            processor = DNASequenceTxtProcessor ("dummy_path")
-            codon_frequencies = [
-                {"ATG": 5, "CGA": 2, "TAC": 1}
-            ]
-            expected_most_common = "ATG"  # Most frequent in the single dictionary
-            assert processor._most_frequent_codon(codon_frequencies) == expected_most_common, "Failed on single codon frequency"
+    def test_simple_case(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        codon_frequencies = [
+            {"ATG": 1, "CGA": 2, "TAC": 1},
+            {"CGA": 3, "TGC": 1},
+            {"CGA": 1, "ATG": 2, "TAC": 2}
+        ]
+        expected_most_common = ["CGA"]  # Appears 6 times in total
+        assert processor._most_frequent_codons(codon_frequencies) == expected_most_common, "Failed on simple case"
 
-        def test_multiple_codons_same_frequency(self):
-            processor = DNASequenceTxtProcessor ("dummy_path")
-            codon_frequencies = [
-                {"ATG": 3, "CGA": 3, "TAC": 2},
-                {"TAC": 3, "CGA": 3}
-            ]
-            expected_most_common = "CGA"  # First codon with the highest frequency
-            assert processor._most_frequent_codon(codon_frequencies) == expected_most_common, "Failed on multiple codons with same frequency"
+    def test_single_codon_frequency(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        codon_frequencies = [
+                            {"ATG": 5, "CGA": 2, "TAC": 1}
+                            ]
+        expected_most_common = ["ATG"]  # Most frequent in the single dictionary
+        assert processor._most_frequent_codons(codon_frequencies) == expected_most_common, "Failed on single codon frequency"
 
-        def test_empty_frequencies(self):
-            processor = DNASequenceTxtProcessor ("dummy_path")
-            codon_frequencies = []
-            with pytest.raises(ValueError, match="No codon frequencies provided."):
-                processor._most_frequent_codon(codon_frequencies)
+    def test_multiple_codons_same_frequency(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        codon_frequencies = [
+                            {"ATG": 3, "CGA": 3, "TAC": 3},
+                            {"TAC": 3, "CGA": 3}
+                            ]
+        expected_most_common = ["CGA", "TAC"]  # Both codons have the highest frequency
+        assert processor._most_frequent_codons(codon_frequencies) == expected_most_common, "Failed on multiple codons with same frequency"
 
-        def test_tie_in_frequencies(self):
-            processor = DNASequenceTxtProcessor ("dummy_path")
-            codon_frequencies = [
-                {"ATG": 2, "CGA": 2},
-                {"TAC": 2, "CGA": 2}
-            ]
-            expected_most_common = "CGA"  # First codon with the highest frequency
-            assert processor._most_frequent_codon(codon_frequencies) == expected_most_common, "Failed on tie in frequencies"
+    def test_empty_frequencies(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        codon_frequencies = []
+        with pytest.raises(ValueError, match="No codon frequencies provided."):
+            processor._most_frequent_codons(codon_frequencies)
 
-        def test_zero_counts(self):
-            processor = DNASequenceTxtProcessor ("dummy_path")
-            codon_frequencies = [
-                {"ATG": 0, "CGA": 0, "TAC": 0},
-                {"TGC": 0, "CGA": 0}
-            ]
-            assert processor._most_frequent_codon(codon_frequencies) == "", "Failed on zero counts"
+    def test_tie_in_frequencies(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        codon_frequencies = [
+                            {"ATG": 2, "CGA": 2},
+                            {"TAC": 4, "CGA": 2}
+                            ]
+        expected_most_common = ["CGA", "TAC"]
+        assert processor._most_frequent_codons(codon_frequencies) == expected_most_common, "Failed on tie in frequencies"
 
-        def test_large_number_of_frequencies(self):
-            processor = DNASequenceTxtProcessor ("dummy_path")
-            codon_frequencies = [
-                {"ATG": 1000, "CGA": 2000, "TAC": 1500},
-                {"TGC": 3000, "CGA": 2500}
-            ]
-            expected_most_common = "CGA"  # Most frequent in the combined dictionaries
-            assert processor._most_frequent_codon(codon_frequencies) == expected_most_common, "Failed on large number of frequencies"
+    def test_large_number_of_frequencies(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        codon_frequencies = [
+                            {"ATG": 1000, "CGA": 2000, "TAC": 1500},
+                            {"TGC": 3000, "CGA": 2500}
+                            ]
+        expected_most_common = ["CGA"]  # Most frequent in the combined dictionaries
+        assert processor._most_frequent_codons(codon_frequencies) == expected_most_common, "Failed on large number of frequencies"
 
 
 class TestLongestCommonSubsequence:
     def test_simple_case_with_one_continuous_subsequence(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "ATCGATCGTAGCTAGCTAGCTGATCGATCGAT"
         seq2 = "ATCGGTAAATGCCTGAAAGATG"
         expected_lcs = "ATCG"
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on simple case with one continuous subsequence"
 
     def test_no_common_continuous_subsequence(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "AAAA"
         seq2 = "TTTT"
         expected_lcs = ""
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on no common continuous subsequence"
 
     def test_one_sequence_is_empty(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "ATCG"
         seq2 = ""
         expected_lcs = ""
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on one sequence is empty"
 
     def test_both_sequences_are_empty(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = ""
         seq2 = ""
         expected_lcs = ""
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on both sequences are empty"
 
     def test_entire_sequence_is_common(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "ATCG"
         seq2 = "ATCG"
         expected_lcs = "ATCG"
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on entire sequence is common"
 
     def test_continuous_subsequence_in_the_middle(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "GATTACAGTACG"
         seq2 = "TAC"
         expected_lcs = "TAC"
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on continuous subsequence in the middle"
 
     def test_continuous_subsequence_at_the_start(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "ATCGGGG"
         seq2 = "ATC"
         expected_lcs = "ATC"
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on continuous subsequence at the start"
 
     def test_continuous_subsequence_at_the_end(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "GGGGATCG"
         seq2 = "ATCG"
         expected_lcs = "ATCG"
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on continuous subsequence at the end"
 
     def test_single_character_common_subsequence(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "ATCG"
         seq2 = "G"
         expected_lcs = "G"
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on single character common subsequence"
 
     def test_larger_sequences_with_a_small_common_substring(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "A" * 1000000 + "TGC" + "G" * 1000000
         seq2 = "TGC"
         expected_lcs = "TGC"
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on larger sequences with a small common substring"
 
     def test_overlapping_subsequences_choose_the_longest_continuous_one(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "AGTACGCA"
         seq2 = "TACG"
         expected_lcs = "TACG"
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on overlapping subsequences (choose the longest continuous one)"
 
     def test_two_large_sequences(self):
-        processor = DNASequenceTxtProcessor ("dummy_path")
+        processor = DNASequenceTxtProcessor("dummy_path")
         seq1 = "A" * 10000 + "C" * 10000 + "G" * 10000 + "T" * 10000
         seq2 = "A" * 10000 + "TGC"
         expected_lcs = "A" * 10000
         assert processor._lcs_between_two(seq1, seq2) == expected_lcs, "Failed on two large sequences"
+
+
+class TestLongestCommonSubsequenceAmongAll:
+    def test_simple_case_with_one_continuous_subsequence(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = [
+            "ATCGATCGTAGCTAGCTAGCTGATCGATCGAT",
+            "ATCGGTAAATGCCTGAAAGATG"
+        ]
+        expected_result = [
+            {"value": "ATCG", "sequences": [1, 2], "length": 4}
+        ]
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on simple case with one continuous subsequence"
+
+    def test_no_common_continuous_subsequence(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = ["AAAA", "TTTT"]
+        expected_result = []
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on no common continuous subsequence"
+
+    def test_single_sequence(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = ["ATCG"]
+        expected_result = []
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on single sequence"
+
+    def test_multiple_identical_sequences(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = ["ATCG", "ATCG", "ATCG"]
+        expected_result = [
+            {"value": "ATCG", "sequences": [1, 2, 3], "length": 4}
+        ]
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on multiple identical sequences"
+
+    def test_several_common_subsequences(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = [
+            "ATCGATCGTAGCTAGCTAGCTGATCGATCGAT",
+            "ATCGGTAAATGCCTGAAAGATG",
+            "ATCGATCGTAGCTAGCTAGCTGATCGATCG"
+        ]
+        expected_result = [
+            {"value": "ATCG", "sequences": [1, 2, 3], "length": 4}
+        ]
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on several common subsequences"
+
+    def test_subsequences_of_equal_length(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = [
+            "ATCGATCGTAGCTAGCTAGCTGATCGATCGAT",
+            "ATCGGTAAATGCCTGAAAGATG",
+            "GATTACAGTACG"
+        ]
+        expected_result = [
+               {
+                   'length': 4,
+                   'sequences': [
+                       1,
+                       2,
+                   ],
+                   'value': 'ATCG',
+               },
+               {
+                  'length': 4,
+                  'sequences': [
+                      1,
+                      3,
+                  ],
+                  'value': 'TACG',
+                },
+           ]
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on subsequences of equal length"
+
+    def test_overlapping_subsequences(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = [
+            "AGTACGCA",
+            "TACG"
+        ]
+        expected_result = [
+            {"value": "TACG", "sequences": [1, 2], "length": 4}
+        ]
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on overlapping subsequences"
+
+    def test_sequences_with_no_overlap(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = [
+            "ACGTA",
+            "TGCA"
+        ]
+        expected_result = [
+                            {
+                                'length': 1,
+                                'sequences': [
+                                            1,
+                                            2,
+                                        ],
+                                'value': 'A',
+                            },
+                            ]
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on sequences with no overlap"
+
+    def test_large_sequences_with_common_subsequence(self):
+        processor = DNASequenceTxtProcessor("dummy_path")
+        processor.dna_sequences = [
+            "A" * 10000 + "C" * 10000 + "G" * 10000 + "T" * 10000,
+            "A" * 10000 + "TGC"
+        ]
+        expected_result = [
+            {"value": "A" * 10000, "sequences": [1, 2], "length": 10000}
+        ]
+        assert processor._longest_common_subsequence_among_all() == expected_result, "Failed on large sequences with common subsequence"
 
 
 class TestProcessDNATxtFile:

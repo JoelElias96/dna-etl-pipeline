@@ -17,6 +17,7 @@ def process_json_file(json_path):
     except json.JSONDecodeError:
         messagebox.showerror("ERROR", "Invalid JSON format.")
 
+
 def select_json_file():
     """Prompt the user to select a JSON file."""
     # Create a file dialog to choose a file
@@ -26,6 +27,7 @@ def select_json_file():
     )
     return file_path
 
+
 def main():
     # Initialize the tkinter root window (it won't be shown)
     root = tk.Tk()
@@ -33,11 +35,12 @@ def main():
 
     # Ask the user to select a JSON file
     json_file = select_json_file()
-    
+
     if json_file:
         process_json_file(json_file)  # Process the selected JSON file
     else:
         messagebox.showinfo("No File Selected", "No file was selected. Exiting.")
+
 
 if __name__ == "__main__":
     main()

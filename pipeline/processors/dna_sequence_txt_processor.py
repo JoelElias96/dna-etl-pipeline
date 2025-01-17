@@ -66,7 +66,7 @@ class DNASequenceTxtProcessor (AbstractFileProcessor):
         """
         # Load sequences from the file
         try:
-            sequences = self._load_sequences()
+            self._load_sequences()
         except FileNotFoundError:
             raise FileNotFoundError(f"File not found: {self.file_path}")
         except ValueError as e:
@@ -90,17 +90,13 @@ class DNASequenceTxtProcessor (AbstractFileProcessor):
         most_common_codon = self._most_frequent_codons(codon_frequencies)
 
         # Compute the longest common subsequence (LCS) among all sequences
-        lcs, lcs_sequences = self._longest_common_subsequence_among_all()
+        lcs = self._longest_common_subsequence_among_all()
 
         # Return the processed data as a dictionary
         return {
             "sequences": sequences_data,
             "most_common_codon": most_common_codon,
-            "lcs": {
-                "value": lcs,
-                "sequences": lcs_sequences,
-                "length": len(lcs)
-            }
+            "lcs": lcs
         }
 
     def _load_sequences(self) -> List:
@@ -211,14 +207,15 @@ class DNASequenceTxtProcessor (AbstractFileProcessor):
         """
        Finds the longest common subsequences (LCS) among a list of DNA sequences.
         This method compares all pairs of sequences in the input list and determines the longest common subsequences
-        shared by any two sequences. It returns a list of dictionaries, each containing the LCS value, 
+        shared by any two sequences. It returns a list of dictionaries, each containing the LCS value,
         the associated sequences (indices), and the length of the LCS.
 
         The function compares each pair of sequences to find the longest common subsequence between them.
-        If a subsequence is the longest found so far, it updates the dictionary. If a subsequence has the same length 
+        If a subsequence is the longest found so far, it updates the dictionary. If a subsequence has the same length
         as the longest found so far, the function adds the pair of sequences to the dictionary.
 
-        The final result is a list of dictionaries, each representing a longest common subsequence with the following keys:
+        The final result is a list of dictionaries,
+        each representing a longest common subsequence with the following keys:
             - "value" (str): The LCS itself.
             - "sequences" (list): A list of unique sequence indices (1-based) that share this LCS.
             - "length" (int): The length of the LCS.
@@ -276,13 +273,14 @@ class DNASequenceTxtProcessor (AbstractFileProcessor):
             if len(lcs_candidate) > max_len:
                 max_len = len(lcs_candidate)
                 lcs_dict = {lcs_candidate: [i + 1, j + 1]}
+
             # If the LCS has the same length as the max found so far, append to the dictionary
             elif len(lcs_candidate) == max_len:
                 if lcs_candidate in lcs_dict:
                     lcs_dict[lcs_candidate].extend([i + 1, j + 1])
                 else:
                     lcs_dict[lcs_candidate] = [i + 1, j + 1]
-                    
+
         # If no LCS is found, return an empty list
         if max_len == 0:
             return []

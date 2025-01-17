@@ -2,6 +2,7 @@ import pytest
 from pathlib import Path
 from pipeline.extract import Extractor
 
+
 class TestExtractFiles:
 
     def test_extract_files(self, tmp_path):

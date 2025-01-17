@@ -1,36 +1,5 @@
+from ui import process_json_file, select_json_file, ask_input_method
 import tkinter as tk
-from tkinter import filedialog
-from tkinter import messagebox
-
-
-def process_json_file(file_path):
-    pass
-
-
-def select_json_file():
-    """Prompt the user to select a JSON file."""
-    # Create a file dialog to choose a file
-    file_path = filedialog.askopenfilename(
-        title="Select a JSON file",
-        filetypes=(("JSON Files", "*.json"), ("All Files", "*.*"))
-    )
-    return file_path
-
-
-def ask_input_method():
-    """Prompt the user to choose between UI or terminal input."""
-    root = tk.Tk()
-    root.withdraw()  # Hide the main tkinter window
-
-    answer = messagebox.askquestion(
-        "Choose Input Method",
-        "Do you want to select the file via the UI?"
-    )
-
-    if answer == "yes":
-        return "ui"
-    else:
-        return "terminal"
 
 
 def main():
@@ -47,8 +16,7 @@ def main():
 
         if json_file:
             process_json_file(json_file)  # Process the selected JSON file
-        else:
-            messagebox.showinfo("No File Selected", "No file was selected. Exiting.")
+
     else:
         # Terminal input method
         json_file = input("Please enter the full path of the JSON file: ")

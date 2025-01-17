@@ -16,6 +16,8 @@ def process_json_file(json_path):
         messagebox.showerror("ERROR", f"File not found: {json_path}")
     except json.JSONDecodeError:
         messagebox.showerror("ERROR", "Invalid JSON format.")
+    except Exception as e:
+        messagebox.showerror("ERROR", f"An error occurred: {e}")
 
 
 def select_json_file():
@@ -28,18 +30,42 @@ def select_json_file():
     return file_path
 
 
-def main():
-    # Initialize the tkinter root window (it won't be shown)
+def ask_input_method():
+    """Prompt the user to choose between UI or terminal input."""
     root = tk.Tk()
     root.withdraw()  # Hide the main tkinter window
 
-    # Ask the user to select a JSON file
-    json_file = select_json_file()
+    answer = messagebox.askquestion(
+        "Choose Input Method",
+        "Do you want to select the file via the UI?"
+    )
 
-    if json_file:
-        process_json_file(json_file)  # Process the selected JSON file
+    if answer == "yes":
+        return "ui"
     else:
-        messagebox.showinfo("No File Selected", "No file was selected. Exiting.")
+        return "terminal"
+
+
+def main():
+    # Ask the user whether to use the UI or terminal for input
+    input_method = ask_input_method()
+
+    if input_method == "ui":
+        # Initialize the tkinter root window (it won't be shown)
+        root = tk.Tk()
+        root.withdraw()  # Hide the main tkinter window
+
+        # Ask the user to select a JSON file
+        json_file = select_json_file()
+
+        if json_file:
+            process_json_file(json_file)  # Process the selected JSON file
+        else:
+            messagebox.showinfo("No File Selected", "No file was selected. Exiting.")
+    else:
+        # Terminal input method
+        json_file = input("Please enter the full path of the JSON file: ")
+        process_json_file(json_file)
 
 
 if __name__ == "__main__":

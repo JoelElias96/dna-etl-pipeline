@@ -56,7 +56,7 @@ class ETLManager:
         """
         try:
             # Capture the start time before processing
-            start_time = datetime.utcnow().isoformat()
+            start_time = datetime.now().isoformat()
 
             # Step 1: Extract files and the participant ID
             self.extractor = Extractor(input_data_file)
@@ -67,11 +67,11 @@ class ETLManager:
             processed_results = self.transformer.transform()
 
             # Capture the end time after processing
-            end_time = datetime.utcnow().isoformat()
+            end_time = datetime.now().isoformat()
 
             # Step 3: Create the final result dictionary
             final_output = self._create_result_dictionary(
-                input_data, processed_results, start_time, end_time
+                input_data, participant_id, processed_results, start_time, end_time
             )
 
             # Define result file path

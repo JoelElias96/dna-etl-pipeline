@@ -4,8 +4,8 @@
 
 This project implements an ETL (Extract, Transform, Load) system designed to process genetic data, specifically DNA sequences. The system is tailored to handle unstructured data from files and produce a structured, normalized JSON file for analysis. It supports two file types:
 
-- **Text files (********`.txt`********\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*)**: Containing DNA sequences.
-- **JSON files (********`.json`********\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*)**: Containing metadata about the DNA test.
+- **Txt files: Containing DNA sequences.
+- **JSON files: Containing metadata about the DNA test.
 
 The project ensures data accuracy and privacy by validating inputs, removing sensitive information, and performing required transformations.
 
@@ -63,7 +63,6 @@ project-root/
 ├── cli/
 ├──── cli.py
 ├── tests/
-│   ├── test_etl_manager.py
 │   ├── test_extract.py
 │   ├── test_file_validation.py
 │   ├── test_json_processor.py
@@ -83,7 +82,7 @@ project-root/
 │           ├── 7a2bc928-9ea0-498e-80f1-3113da2b50a6/
 │           ├....
 │           └── ffa093c9-c178-4631-9f0f-7be686d602b4/
-├──requirements
+├──requirements.txt
 └── README.md
 ```
 

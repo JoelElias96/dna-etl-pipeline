@@ -12,7 +12,7 @@ The project ensures data accuracy and privacy by validating inputs, removing sen
 ---
 
 ## Features
-![Demo](./docs/demo.mp4)
+
 1. **File Processing**:
 
    - Computes GC content and codon frequency for DNA sequences.
@@ -95,6 +95,8 @@ project-root/
 To use the system, you can choose between the GUI and CLI modes. Each interface is designed for a different user preference or operational need.
 
 #### GUI Mode
+
+![Watch Gui Demo](./assets/gifs/gui_demo.gif)
 
 To launch the graphical user interface, run the following command:
 ```bash

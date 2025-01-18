@@ -57,7 +57,6 @@ project-root/
 │       └── dna_sequence_txt_processor.py
 ├── utils/
 ├──── input_validator.py
-├── main.py
 ├── ui/
 │      ├── gui/
 │      │    └── gui.py
@@ -85,6 +84,7 @@ project-root/
 │           ├── 7a2bc928-9ea0-498e-80f1-3113da2b50a6/
 │           ├....
 │           └── ffa093c9-c178-4631-9f0f-7be686d602b4/
+├── main.py
 ├──requirements.txt
 └── README.md
 ```

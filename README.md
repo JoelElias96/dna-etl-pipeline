@@ -55,9 +55,35 @@ project-root/
 │       ├── file_processor.py
 │       ├── test_metadata_json_processor.py
 │       └── dna_sequence_txt_processor.py
+├── utils/
+├──── input_validator.py
 ├── main.py
-├── gui.py
-├── cli.py
+├── gui/
+├──── gui.py
+├── cli/
+├──── cli.py
+├── tests/
+│   ├── test_etl_manager.py
+│   ├── test_extract.py
+│   ├── test_file_validation.py
+│   ├── test_json_processor.py
+│   ├── test_processor_factory.py
+│   └── test_txt_processor
+├── data/
+│   └── inputs/
+│           ├── invalid/
+│               ├── 7a2bc928-9ea0-498e-80f1-3113da2b50a6_input.json
+│               ├....
+│               └── invalid_json_input.json
+│           ├── valid/
+│               ├── 12ba71a0-30f4-464e-ba1b-9a31ea7d35fc_input.json
+│               ├....
+│               └── ffa093c9-c178-4631-9f0f-7be686d602b4_input.json
+│       participants/
+│           ├── 7a2bc928-9ea0-498e-80f1-3113da2b50a6/
+│           ├....
+│           └── ffa093c9-c178-4631-9f0f-7be686d602b4/
+├──requirements
 └── README.md
 ```
 

@@ -1,8 +1,9 @@
-from ui import run
+from gui.gui import run
 
 
-def main():  
+def main():
     run()
+
 
 if __name__ == "__main__":
     main()

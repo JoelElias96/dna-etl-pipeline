@@ -118,7 +118,7 @@ class ETLApp:
             messagebox.showinfo("Success", f"ETL process completed successfully for {file_path}")
         except Exception as e:
             processing_window.destroy()
-            messagebox.showerror("Error", f"ETL process failed: {e}")
+            messagebox.showerror("Error", e)
 
 
 def run() -> None:

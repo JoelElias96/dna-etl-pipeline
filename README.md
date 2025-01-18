@@ -164,7 +164,7 @@ The ETL system is designed using a modular architecture to ensure scalability, m
 
 ### Core Components
 
-#### Extractor (`extract.py`):
+#### Extractor:
 - **Purpose**: Reads and validates input data, including file paths and UUIDs, and prepares files for processing.
 - **Key Functions**:
   - **`extract`**:
@@ -177,7 +177,7 @@ The ETL system is designed using a modular architecture to ensure scalability, m
 - **Inputs**: Input JSON file containing `context_path` and `results_path`.
 - **Outputs**: List of files, extracted UUID, and validated input data.
 
-#### Transformer (`transform.py`):
+#### Transformer:
 - **Purpose**: Applies type-specific transformations to the extracted files.
 - **Key Functions**:
   - **`transform`**:
@@ -188,7 +188,7 @@ The ETL system is designed using a modular architecture to ensure scalability, m
 - **Inputs**: List of files and input data from the extractor.
 - **Outputs**: Processed results as a structured dictionary.
 
-#### Loader (`load.py`):
+#### Loader:
 - **Purpose**: Saves the transformed data into a structured JSON output file.
 - **Key Functions**:
   - **`load`**:
@@ -197,7 +197,7 @@ The ETL system is designed using a modular architecture to ensure scalability, m
 - **Inputs**: Processed results and the desired output file path.
 - **Outputs**: A single JSON file combining the processed `.txt` and `.json` data.
 
-#### ETL Manager (`etl_manager.py`):
+#### ETL Manager:
 - **Purpose**: Orchestrates the ETL process by coordinating the Extractor, Transformer, and Loader.
 - **Key Functions**:
   - **`process`**:
@@ -212,7 +212,7 @@ The ETL system is designed using a modular architecture to ensure scalability, m
 
 ### File Processors
 
-#### DNA Sequence Processor (`dna_sequence_txt_processor.py`):
+#### DNA Sequence Processor:
 - Handles `.txt` files containing DNA sequences.
 - Key features:
   - **GC Content Calculation**: Computes the percentage of Guanine and Cytosine nucleotides.
@@ -220,7 +220,7 @@ The ETL system is designed using a modular architecture to ensure scalability, m
   - **Most Common Codon**: Determines the codon appearing most frequently across sequences.
   - **Longest Common Subsequence (LCS)**: Identifies shared subsequences across multiple DNA sequences.
 
-#### Metadata Processor (`metadata_json_processor.py`):
+#### Metadata Processor:
 - Handles `.json` files containing metadata.
 - Key features:
   - **Validation**:
@@ -232,7 +232,7 @@ The ETL system is designed using a modular architecture to ensure scalability, m
 
 ---
 
-### Input Validation (`input_validation.py`)
+### Input Validation:
 
 This utility validates the input JSON and directory structure before extraction. It ensures:
 - Correct directory paths (`context_path` and `results_path`).
@@ -258,16 +258,9 @@ This utility validates the input JSON and directory structure before extraction.
 
 - **Modular Design**: Each component (Extractor, Transformer, Loader) operates independently, making the system extensible for additional file types.
 - **Factory Pattern**: Dynamically selects file processors based on file type, simplifying the transformer logic.
-- **Validation and Error Handling**:
-  - Input validation ensures data integrity at the extraction phase.
-  - Robust error handling prevents runtime issues during processing.
 - **Template Method Pattern**:
-  - The `AbstractFileProcessor` employs the **Template Method** design pattern to enforce a consistent workflow for file processing.
-  - Subclasses (`DNASequenceTxtProcessor` and `MetadataJsonProcessor`) implement specific logic while adhering to the abstract workflow.
-  - **Advantages**:
-    - Ensures uniformity across file processors.
-    - Promotes code reuse by encapsulating shared logic in the base class.
-    - Simplifies adding new file types by focusing only on their unique logic.
+  - The AbstractFileProcessor demonstrates the power of polymorphism by serving as a base class for file processors. It defines a standard interface (process method) that ensures a consistent workflow for file processing.
+  - Subclasses like DNASequenceTxtProcessor and MetadataJsonProcessor override the process method to provide specific logic for their respective file types, leveraging polymorphism to customize behavior while adhering to the abstract workflow.
 
 This architecture ensures scalability, robustness, and ease of future enhancements.
 

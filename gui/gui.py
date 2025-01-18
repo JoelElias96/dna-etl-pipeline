@@ -94,7 +94,8 @@ class ETLApp:
         label = tk.Label(processing_window, text="Processing...", font=("Arial", 10))
         label.pack(pady=20)
 
-        processing_window.update_idletasks()  # Ensure the window and its contents are fully rendered
+        # Ensure the window and its contents are fully rendered
+        processing_window.update_idletasks()
 
         return processing_window
 
@@ -112,8 +113,9 @@ class ETLApp:
         processing_window = self._create_processing_window()
 
         try:
+            # Create the ETL manager and process the input file
             etl_manager = ETLManager()
-            etl_manager.process(file_path)  # Run the ETL process
+            etl_manager.process(file_path)
             processing_window.destroy()
             messagebox.showinfo("Success", f"ETL process completed successfully for {file_path}")
         except Exception as e:

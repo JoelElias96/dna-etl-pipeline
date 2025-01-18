@@ -1,0 +1,288 @@
+{
+    "metadata": {
+        "start_at": "2025-01-18T10:57:56.207640",
+        "end_at": "2025-01-18T10:57:56.269105",
+        "context_path": "./data/participants/ffa093c9-c178-4631-9f0f-7be686d602b4",
+        "results_path": "./data/participants/ffa093c9-c178-4631-9f0f-7be686d602b4/out"
+    },
+    "results": [
+        {
+            "participant": {
+                "_id": "ffa093c9-c178-4631-9f0f-7be686d602b4"
+            },
+            "txt": {
+                "sequences": [
+                    {
+                        "gc_content": 57.08,
+                        "codons": {
+                            "ATG": 1,
+                            "CGT": 4,
+                            "ACG": 3,
+                            "TGA": 4,
+                            "GCT": 3,
+                            "AGC": 7,
+                            "GTA": 2,
+                            "TAG": 4,
+                            "CGA": 1,
+                            "TCG": 3,
+                            "GTC": 1,
+                            "GAG": 5,
+                            "TTC": 1,
+                            "AGG": 6,
+                            "CAG": 3,
+                            "TCC": 1,
+                            "TGC": 2,
+                            "GCA": 2,
+                            "GTG": 4,
+                            "AGT": 5,
+                            "GCG": 1,
+                            "TAC": 3,
+                            "GAT": 1,
+                            "GAC": 3,
+                            "AGA": 1,
+                            "ACT": 1,
+                            "GGT": 1,
+                            "GGA": 1,
+                            "CTG": 1
+                        }
+                    },
+                    {
+                        "gc_content": 56.46,
+                        "codons": {
+                            "GCT": 6,
+                            "AGG": 96,
+                            "AGT": 58,
+                            "ACG": 14,
+                            "TAG": 38,
+                            "GTC": 2,
+                            "AGC": 21,
+                            "GTA": 55,
+                            "CGT": 18,
+                            "GCG": 12,
+                            "TAC": 4,
+                            "GAC": 9,
+                            "TGA": 7,
+                            "AGA": 19,
+                            "GGA": 45,
+                            "GCA": 7,
+                            "CGA": 8,
+                            "CTG": 2,
+                            "GAT": 3,
+                            "GAG": 69,
+                            "TCA": 2,
+                            "CTA": 5,
+                            "CAG": 12,
+                            "TGG": 3,
+                            "GTT": 1,
+                            "ACT": 4,
+                            "TCG": 3,
+                            "GAA": 6,
+                            "CGG": 3,
+                            "ACA": 3,
+                            "ATC": 2,
+                            "CTC": 1,
+                            "GGT": 8,
+                            "GTG": 13,
+                            "TTC": 1,
+                            "TGC": 4,
+                            "CGC": 1,
+                            "ATA": 1,
+                            "CCT": 1,
+                            "CTT": 2,
+                            "GGG": 17,
+                            "AAG": 3,
+                            "GGC": 2,
+                            "ATG": 2
+                        }
+                    }
+                ],
+                "most_common_codon": [
+                    "AGG"
+                ],
+                "lcs": [
+                    {
+                        "value": "CAGGAGGTAGCAGT",
+                        "sequences": [
+                            1,
+                            2
+                        ],
+                        "length": 14
+                    }
+                ]
+            },
+            "json": {
+                "test_metadata": {
+                    "test_id": "DNA987654",
+                    "test_type": "Genetic Profiling",
+                    "date_requested": "2024-05-10",
+                    "date_completed": "2024-05-20",
+                    "status": "Completed",
+                    "laboratory_info": {
+                        "name": "BioGene Lab Co.",
+                        "certification": "CLIA Certified"
+                    }
+                },
+                "sample_metadata": {
+                    "sample_id": "SAMP123456",
+                    "sample_type": "Blood",
+                    "collection_date": "2024-05-10",
+                    "data_file": "./data/participants/ffa093c9-c178-4631-9f0f-7be686d602b4"
+                },
+                "analysis_metadata": {
+                    "platform": "Illumina HiSeq 4000",
+                    "methodology": "Exome Sequencing",
+                    "coverage": "50x",
+                    "reference_genome": "GRCh37",
+                    "variants_detected": {
+                        "total": 4500,
+                        "pathogenic": 20,
+                        "likely_pathogenic": 10,
+                        "benign": 4470
+                    }
+                },
+                "individual_metadata": {
+                    "date_of_birth": "1981-03-18",
+                    "gender": "Female",
+                    "ethnicity": "Hispanic",
+                    "family_history": {
+                        "diseases": [
+                            {
+                                "name": "Ovarian Cancer",
+                                "relation": "Mother",
+                                "age_at_diagnosis": 45
+                            },
+                            {
+                                "name": "Hypertension",
+                                "relation": "Father",
+                                "age_at_diagnosis": 50
+                            }
+                        ]
+                    }
+                },
+                "treatment_metadata": {
+                    "treatment_plan": "Ongoing Hypertension and Cardiovascular Disease Management",
+                    "treatment_start_date": "2023-06-15",
+                    "expected_duration": "Ongoing with Annual Reviews and Adjustments",
+                    "current_medications": [
+                        {
+                            "name": "Lisinopril",
+                            "dose": "10 mg daily",
+                            "purpose": "Blood pressure management"
+                        },
+                        {
+                            "name": "Metformin",
+                            "dose": "500 mg twice daily",
+                            "purpose": "Blood sugar regulation for pre-diabetes"
+                        }
+                    ],
+                    "doctor": "Dr. Sarah R. Adams, Cardiologist"
+                },
+                "environmental_factors": {
+                    "smoking_history": "Non-smoker",
+                    "alcohol_consumption": "Occasional drinker, 1-2 glasses of wine per week",
+                    "exercise_regimen": "Moderate exercise 3 times a week, including walking",
+                    "diet": "Balanced diet, focus on reducing fats, more vegetables",
+                    "sleep_patterns": "Averages 7-8 hours of sleep per night, consistent routine"
+                },
+                "biomarker_data": {
+                    "blood_pressure": "120/80 mmHg",
+                    "cholesterol_levels": {
+                        "total_cholesterol": "190 mg/dL",
+                        "LDL": "110 mg/dL",
+                        "HDL": "55 mg/dL",
+                        "triglycerides": "130 mg/dL"
+                    },
+                    "blood_sugar": "Fasting glucose: 92 mg/dL, HbA1c: 5.7%",
+                    "kidney_function": {
+                        "creatinine": "0.9 mg/dL",
+                        "eGFR": "90 mL/min/1.73m\u00b2"
+                    },
+                    "oxygen_saturation": "98% at rest, 95% after physical activity"
+                },
+                "family_health_history": {
+                    "paternal_history": {
+                        "heart_disease": "Father diagnosed with coronary artery disease",
+                        "stroke": "Father experienced stroke at age 58, partial paralysis"
+                    },
+                    "maternal_history": {
+                        "cancer": "Mother diagnosed with breast cancer at age 47",
+                        "diabetes": "Mother diagnosed with type 2 diabetes at age 52"
+                    },
+                    "siblings_health": {
+                        "sister": "Diagnosed with asthma at age 20, mild symptoms",
+                        "brother": "No chronic conditions, maintains an active lifestyle"
+                    }
+                },
+                "genomic_risk_factors": {
+                    "BRCA1_variant": "No pathogenic variants detected",
+                    "APOE_genotype": "APOE \u03b54/\u03b53 genotype, risk for Alzheimer's disease",
+                    "MTHFR_mutation": "Heterozygous for C677T mutation, increased risk for CVD",
+                    "FTO_gene": "FTO gene variant associated with higher BMI, maintains weight",
+                    "TP53_mutation": "No mutations associated with higher cancer risk detected"
+                },
+                "mental_health_metadata": {
+                    "diagnosis": "No history of psychiatric disorders, good mental health",
+                    "medications": "No psychiatric medications prescribed",
+                    "therapy": "No ongoing psychotherapy or counseling sessions"
+                },
+                "vaccine_metadata": {
+                    "flu_vaccine": "Received annually, last dose in 2023",
+                    "COVID_vaccine": "Completed full vaccination regimen with boosters",
+                    "tetanus_vaccine": "Last dose received in 2021, next due in 2026"
+                },
+                "social_support_metadata": {
+                    "caregiver": "Spouse, provides primary support with daily activities",
+                    "community_involvement": "Active member of local senior wellness group",
+                    "social_interactions": "Maintains regular contact with family and friends"
+                },
+                "activity_level_metadata": {
+                    "daily_activity": "Walks 3 miles a day, light stretching",
+                    "weekly_exercise": "Participates in yoga class 2 times a week",
+                    "exercise_intensity": "Moderate intensity, adapted for joint health"
+                },
+                "dietary_supplement_metadata": {
+                    "supplements": [
+                        {
+                            "name": "Vitamin D",
+                            "dose": "1000 IU daily",
+                            "purpose": "Bone health and immune support"
+                        },
+                        {
+                            "name": "Fish Oil",
+                            "dose": "1000 mg daily",
+                            "purpose": "Support cardiovascular health"
+                        }
+                    ],
+                    "nutritionist": "Consulted with nutritionist for meal planning"
+                },
+                "surgical_history_metadata": {
+                    "surgery_name": "Hip replacement surgery",
+                    "surgery_date": "2020-03-15",
+                    "surgery_outcome": "Successful recovery, no complications",
+                    "follow_up": "Routine checkups every 6 months"
+                },
+                "radiology_metadata": {
+                    "last_xray": "2024-02-20, Chest X-ray clear",
+                    "last_ct_scan": "2023-10-10, Abdominal CT scan showed normal results",
+                    "last_mri": "2023-08-12, MRI of knee, shows mild osteoarthritis"
+                },
+                "blood_type_metadata": {
+                    "blood_type": "O positive",
+                    "rh_factor": "Positive",
+                    "last_blood_test": "2023-12-01, no abnormalities detected"
+                },
+                "emergency_contact_metadata": {
+                    "primary_contact_name": "Maria Doe",
+                    "relation": "Spouse",
+                    "contact_number": "+1234567890",
+                    "address": "123 Main St, Anytown, USA"
+                },
+                "allergy_metadata": {
+                    "food_allergies": "None",
+                    "drug_allergies": "Penicillin",
+                    "environmental_allergies": "Pollen, seasonal"
+                }
+            }
+        }
+    ]
+}

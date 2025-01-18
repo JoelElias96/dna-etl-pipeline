@@ -96,7 +96,7 @@ To use the system, you can choose between the GUI and CLI modes. Each interface 
 
 #### GUI Mode
 
-![Watch Gui Demo](./assets/gifs/gui_demo.gif)
+![Watch Gui Demo](./ui/assets/gifs/gui_demo.gif)
 
 To launch the graphical user interface, run the following command:
 ```bash
@@ -106,6 +106,8 @@ python main.py
 When the GUI launches, it will prompt you to select a JSON file using a file selection dialog. The selected JSON must adhere to the valid input format described below. Once the file is selected, the ETL process will begin. If the process takes time, a "Processing..." window will appear to indicate ongoing operations. Upon completion, the system will display a message box indicating whether the process was successful or if an error occurred. This provides immediate feedback to the user.
 
 #### CLI Mode
+
+![Watch Gui Demo](./ui/assets/gifs/cli_demo.gif)
 
 The command-line interface supports both single-file processing and batch processing of multiple JSON files. To use the CLI, run:
 ```bash

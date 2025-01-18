@@ -77,7 +77,7 @@ class ETLAppCli:
 
         for json_file in json_files:
             file_path = os.path.join(directory_path, json_file)
-            print(f"Running ETL for file: {file_path}")
+            print(f"Running ETL for file: {file_path}...")
             self._run_etl(file_path)
 
     def _run_etl(self, file_path: str) -> None:

@@ -156,9 +156,120 @@ The system generates a structured JSON file in the `results_path`. Example:
 
 ## Development
 
-### Key Files
+### System Design and Architecture
 
-The project consists of several key files. The `pipeline/extract.py` module handles data extraction and validation. The `pipeline/transform.py` module processes and transforms data, while the `pipeline/load.py` module saves the final output. The `gui.py` file provides the graphical user interface, and `cli.py` implements the command-line interface.
+The ETL system is designed using a modular architecture to ensure scalability, maintainability, and clarity. Each component has a specific role, enabling efficient processing and reducing interdependencies. Below is a detailed breakdown of the system's design:
+
+---
+
+### Core Components
+
+#### Extractor (`extract.py`):
+- **Purpose**: Reads and validates input data, including file paths and UUIDs, and prepares files for processing.
+- **Key Functions**:
+  - **`extract`**:
+    - Validates the input JSON structure and its contents.
+    - Extracts valid files (`.txt` and `.json`) from the specified directory.
+    - Retrieves the participant's UUID from the directory structure and ensures all files match this UUID.
+  - **Validation**:
+    - Ensures required file extensions and matching UUIDs.
+    - Checks for missing or incorrect directory structure.
+- **Inputs**: Input JSON file containing `context_path` and `results_path`.
+- **Outputs**: List of files, extracted UUID, and validated input data.
+
+#### Transformer (`transform.py`):
+- **Purpose**: Applies type-specific transformations to the extracted files.
+- **Key Functions**:
+  - **`transform`**:
+    - Uses a factory pattern to select the appropriate processor (`DNASequenceTxtProcessor` for `.txt` or `MetadataJsonProcessor` for `.json`).
+    - Processes files and aggregates results for further analysis.
+  - **File Processor Factory**:
+    - Dynamically instantiates processors based on file type, decoupling file-specific logic from the transformer.
+- **Inputs**: List of files and input data from the extractor.
+- **Outputs**: Processed results as a structured dictionary.
+
+#### Loader (`load.py`):
+- **Purpose**: Saves the transformed data into a structured JSON output file.
+- **Key Functions**:
+  - **`load`**:
+    - Serializes the processed data and writes it to the specified `results_path`.
+    - Ensures data is written with proper indentation for readability.
+- **Inputs**: Processed results and the desired output file path.
+- **Outputs**: A single JSON file combining the processed `.txt` and `.json` data.
+
+#### ETL Manager (`etl_manager.py`):
+- **Purpose**: Orchestrates the ETL process by coordinating the Extractor, Transformer, and Loader.
+- **Key Functions**:
+  - **`process`**:
+    - Validates input JSON and initializes the extractor.
+    - Delegates file processing to the transformer.
+    - Combines metadata and results into a final output dictionary.
+    - Invokes the loader to save the results to the output directory.
+- **Inputs**: Path to the input JSON file.
+- **Outputs**: A single JSON output file.
+
+---
+
+### File Processors
+
+#### DNA Sequence Processor (`dna_sequence_txt_processor.py`):
+- Handles `.txt` files containing DNA sequences.
+- Key features:
+  - **GC Content Calculation**: Computes the percentage of Guanine and Cytosine nucleotides.
+  - **Codon Frequency**: Counts triplets of nucleotides within each sequence.
+  - **Most Common Codon**: Determines the codon appearing most frequently across sequences.
+  - **Longest Common Subsequence (LCS)**: Identifies shared subsequences across multiple DNA sequences.
+
+#### Metadata Processor (`metadata_json_processor.py`):
+- Handles `.json` files containing metadata.
+- Key features:
+  - **Validation**:
+    - Checks all strings are under 64 characters.
+    - Ensures date fields are within the range `2014-01-01` to `2024-12-31`.
+    - Confirms the participant is at least 40 years old based on the `date_of_birth`.
+  - **Sanitization**:
+    - Removes sensitive fields (keys starting with `_`).
+
+---
+
+### Input Validation (`input_validation.py`)
+
+This utility validates the input JSON and directory structure before extraction. It ensures:
+- Correct directory paths (`context_path` and `results_path`).
+- Matching UUIDs between files and directory names.
+- Presence of both `.txt` and `.json` files for each participant.
+
+---
+
+### Workflow
+
+1. **Extract**:
+   - Input JSON is read and validated.
+   - Files and UUIDs are extracted from the `context_path`.
+2. **Transform**:
+   - Each file is processed using the appropriate file processor.
+   - Transformed data is aggregated into a dictionary.
+3. **Load**:
+   - Aggregated data is saved as a structured JSON file in the `results_path`.
+
+---
+
+### Design Choices
+
+- **Modular Design**: Each component (Extractor, Transformer, Loader) operates independently, making the system extensible for additional file types.
+- **Factory Pattern**: Dynamically selects file processors based on file type, simplifying the transformer logic.
+- **Validation and Error Handling**:
+  - Input validation ensures data integrity at the extraction phase.
+  - Robust error handling prevents runtime issues during processing.
+- **Template Method Pattern**:
+  - The `AbstractFileProcessor` employs the **Template Method** design pattern to enforce a consistent workflow for file processing.
+  - Subclasses (`DNASequenceTxtProcessor` and `MetadataJsonProcessor`) implement specific logic while adhering to the abstract workflow.
+  - **Advantages**:
+    - Ensures uniformity across file processors.
+    - Promotes code reuse by encapsulating shared logic in the base class.
+    - Simplifies adding new file types by focusing only on their unique logic.
+
+This architecture ensures scalability, robustness, and ease of future enhancements.
 
 
 ---

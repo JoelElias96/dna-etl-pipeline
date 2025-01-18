@@ -156,12 +156,6 @@ The system generates a structured JSON file in the `results_path`. Example:
 
 The project consists of several key files. The `pipeline/extract.py` module handles data extraction and validation. The `pipeline/transform.py` module processes and transforms data, while the `pipeline/load.py` module saves the final output. The `gui.py` file provides the graphical user interface, and `cli.py` implements the command-line interface.
 
-### Testing
-
-Unit tests are included for individual components to ensure the system operates reliably. To run these tests, use the following command:
-```bash
-pytest tests/
-```
 
 ---
 

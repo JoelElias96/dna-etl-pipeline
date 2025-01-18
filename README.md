@@ -58,10 +58,13 @@ project-root/
 ├── utils/
 ├──── input_validator.py
 ├── main.py
-├── gui/
-├──── gui.py
-├── cli/
-├──── cli.py
+├── ui/
+│      ├── gui/
+│      │    └── gui.py
+│      ├── cli/
+│      │    └── cli.py
+│      └── assets/
+│           └── gifs/
 ├── tests/
 │   ├── test_extract.py
 │   ├── test_file_validation.py
@@ -74,7 +77,7 @@ project-root/
 │               ├── 7a2bc928-9ea0-498e-80f1-3113da2b50a6_input.json
 │               ├....
 │               └── invalid_json_input.json
-│           ├── valid/
+│           └── valid/
 │               ├── 12ba71a0-30f4-464e-ba1b-9a31ea7d35fc_input.json
 │               ├....
 │               └── ffa093c9-c178-4631-9f0f-7be686d602b4_input.json

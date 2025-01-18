@@ -90,44 +90,46 @@ project-root/
 
 ## How to Use
 
-### 1. Running the Application
+### Running the Application
+
+To use the system, you can choose between the GUI and CLI modes. Each interface is designed for a different user preference or operational need.
 
 #### GUI Mode
 
-To launch the graphical user interface:
-
+To launch the graphical user interface, run the following command:
 ```bash
 python main.py
 ```
 
+When the GUI launches, it will prompt you to select a JSON file using a file selection dialog. The selected JSON must adhere to the valid input format described below. Once the file is selected, the ETL process will begin. If the process takes time, a "Processing..." window will appear to indicate ongoing operations. Upon completion, the system will display a message box indicating whether the process was successful or if an error occurred. This provides immediate feedback to the user.
+
 #### CLI Mode
 
-To use the command-line interface:
-
+The command-line interface supports both single-file processing and batch processing of multiple JSON files. To use the CLI, run:
 ```bash
 python main.py -i <input_file_or_directory>
 ```
 
-### 2. Input Format
+- If an input file is specified, the system will process that file and output the result.
+- If an input directory is specified, the system will process all valid JSON files in that directory. For each file processed, the CLI will display a line indicating the file being processed and the output result (e.g., "ETL process completed successfully for <filename>" or "Error: <description>"). This output provides clear visibility into the processing of each file.
+
+### Input Format
 
 The input JSON should contain the following structure:
-
 ```json
 {
   "context_path": "<path_to_input_files>",
   "results_path": "<path_to_output_directory>/out/"
 }
 ```
-
 - `context_path`: Directory containing `.txt` and `.json` files.
 - `results_path`: Directory where the output JSON will be saved.
 
 Ensure that the input directory contains both `.txt` and `.json` files with matching UUIDs in their filenames.
 
-### 3. Output
+### Output
 
 The system generates a structured JSON file in the `results_path`. Example:
-
 ```json
 {
   "metadata": {
@@ -152,16 +154,11 @@ The system generates a structured JSON file in the `results_path`. Example:
 
 ### Key Files
 
-- `pipeline/extract.py`: Handles data extraction and validation.
-- `pipeline/transform.py`: Processes and transforms data.
-- `pipeline/load.py`: Saves the final output.
-- `gui.py`: Provides the graphical user interface.
-- `cli.py`: Implements the command-line interface.
+The project consists of several key files. The `pipeline/extract.py` module handles data extraction and validation. The `pipeline/transform.py` module processes and transforms data, while the `pipeline/load.py` module saves the final output. The `gui.py` file provides the graphical user interface, and `cli.py` implements the command-line interface.
 
 ### Testing
 
-Unit tests are included for individual components. To run tests:
-
+Unit tests are included for individual components to ensure the system operates reliably. To run these tests, use the following command:
 ```bash
 pytest tests/
 ```
@@ -172,5 +169,5 @@ pytest tests/
 
 Joel Elias
 
-For questions or feedback, contact me at [Joelel1996@gmail.com](mailto\:Joelel1996@gmail.com)
+For questions or feedback, contact me at [Joelel1996@gmail.com](mailto:Joelel1996@gmail.com)
 

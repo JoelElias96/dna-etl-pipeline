@@ -4,8 +4,8 @@
 
 This project implements an ETL (Extract, Transform, Load) system designed to process genetic data, specifically DNA sequences. The system is tailored to handle unstructured data from files and produce a structured, normalized JSON file for analysis. It supports two file types:
 
-- **Txt files: Containing DNA sequences.
-- **JSON files: Containing metadata about the DNA test.
+- **Txt files**: Containing DNA sequences.
+- **JSON files**: Containing metadata about the DNA test.
 
 The project ensures data accuracy and privacy by validating inputs, removing sensitive information, and performing required transformations.
 
@@ -165,13 +165,6 @@ Unit tests are included for individual components. To run tests:
 ```bash
 pytest tests/
 ```
-
----
-
-## Known Limitations
-
-- The GUI does not support batch processing.
-- Performance may degrade for very large DNA datasets during LCS computation.
 
 ---
 

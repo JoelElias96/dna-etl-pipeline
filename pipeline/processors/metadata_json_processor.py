@@ -4,7 +4,7 @@ from pipeline.processors.file_processor import AbstractFileProcessor
 from typing import Dict
 
 
-class TestMetadataJsonProcessor (AbstractFileProcessor):
+class MetadataJsonProcessor (AbstractFileProcessor):
 
     """
         JSONProcessor is a class for processing and sanitizing JSON files.

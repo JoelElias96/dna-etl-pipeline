@@ -1,4 +1,4 @@
-from pipeline.processors.test_metadata_json_processor import TestMetadataJsonProcessor
+from pipeline.processors.metadata_json_processor import MetadataJsonProcessor
 from pipeline.processors.dna_sequence_txt_processor import DNASequenceTxtProcessor
 
 
@@ -19,7 +19,7 @@ class FileProcessorFactory:
             ValueError: If the file type is not supported.
         """
         if file_type.lower() == 'json':
-            return TestMetadataJsonProcessor(file_path)
+            return MetadataJsonProcessor(file_path)
         elif file_type.lower() == 'txt':
             return DNASequenceTxtProcessor(file_path)
         else:

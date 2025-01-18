@@ -1,6 +1,6 @@
 import sys
-from gui import gui
-from cli import cli
+from ui.gui import gui
+from ui.cli import cli
 
 
 def main():

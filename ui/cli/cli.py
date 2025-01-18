@@ -92,9 +92,9 @@ class ETLAppCli:
             etl_manager = ETLManager()
             # Pass the file path directly to the ETL manager
             etl_manager.process(file_path)
-            print(f"ETL process completed successfully for {file_path}")
+            print(f"ETL process completed successfully for {file_path}\n")
         except Exception as e:
-            print(f"Error during ETL process for {file_path}: {e}")
+            print(f"Error during ETL process for {file_path}: {e}\n")
 
 
 def run() -> None:

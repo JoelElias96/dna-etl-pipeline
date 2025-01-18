@@ -12,7 +12,7 @@ The project ensures data accuracy and privacy by validating inputs, removing sen
 ---
 
 ## Features
-
+[Watch the demo video].\dna-etl-pipeline\docs\demo.mp4
 1. **File Processing**:
 
    - Computes GC content and codon frequency for DNA sequences.
